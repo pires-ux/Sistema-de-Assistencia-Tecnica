@@ -1,0 +1,23 @@
+@Api4_HostAddress = http://localhost:5156
+
+///Cliente
+GET {{Api4_HostAddress}}/Cliente
+Accept: application/json
+
+###
+GET {{Api4_HostAddress}}/Cliente/1
+Accept: aplication/json
+
+###
+POST {{Api4_HostAddress}}/Cliente
+Content-Type: application/json
+
+
+
+###
+GET {{Api4_HostAddress}}/Problema/2
+Accept: applicatio/json
+
+###
+POST {{Api4_HostAddress}}/Problema
+Content-Type: applicatio/json

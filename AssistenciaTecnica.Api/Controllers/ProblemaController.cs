@@ -1,0 +1,35 @@
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Api4.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class ProblemaController : Controller
+    {
+        private readonly ServiceProblema _service;
+
+        public ProblemaController(ServiceProblema service)
+        {
+            _service = service;
+
+        }
+
+        List<OrdemDeServico> serviços = new List<OrdemDeServico>();
+        [HttpGet("{idcliente}")]
+        public List<OrdemDeServico> Get(int idcliente)
+        {
+            serviços = _service.Get(idcliente);
+            return serviços;
+        }
+
+        [HttpPost]
+        public IActionResult Post(OrdemDeServico ordem)
+        {
+            _service.Post(ordem);
+            return Ok(ordem);
+        }
+
+
+    }
+}
