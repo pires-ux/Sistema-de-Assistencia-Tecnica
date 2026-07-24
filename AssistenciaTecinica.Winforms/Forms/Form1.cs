@@ -21,8 +21,8 @@ namespace Ex04
         private async void button1_Click(object sender, EventArgs e)
         {
             string nome = textBox1.Text;
-            long telefone = long.Parse(textBox2.Text);
-            long cpf = long.Parse(textBox3.Text);
+            string telefone = textBox2.Text;
+            string cpf = textBox3.Text;
             string endereco = textBox4.Text;
 
             Cliente cliente = new Cliente(0, nome, telefone, cpf, endereco);

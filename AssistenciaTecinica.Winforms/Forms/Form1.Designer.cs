@@ -34,6 +34,10 @@
             textBox3 = new TextBox();
             textBox4 = new TextBox();
             linkLabel1 = new LinkLabel();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
             SuspendLayout();
             // 
             // button1
@@ -48,28 +52,28 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(169, 74);
+            textBox1.Location = new Point(169, 33);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(100, 23);
             textBox1.TabIndex = 1;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(169, 103);
+            textBox2.Location = new Point(169, 77);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(100, 23);
             textBox2.TabIndex = 2;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(169, 130);
+            textBox3.Location = new Point(169, 121);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(100, 23);
             textBox3.TabIndex = 3;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(169, 159);
+            textBox4.Location = new Point(169, 165);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(100, 23);
             textBox4.TabIndex = 4;
@@ -85,11 +89,51 @@
             linkLabel1.Text = "login";
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(169, 15);
+            label1.Name = "label1";
+            label1.Size = new Size(43, 15);
+            label1.TabIndex = 6;
+            label1.Text = "Nome:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(169, 59);
+            label2.Name = "label2";
+            label2.Size = new Size(54, 15);
+            label2.TabIndex = 7;
+            label2.Text = "Telefone:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(169, 103);
+            label3.Name = "label3";
+            label3.Size = new Size(29, 15);
+            label3.TabIndex = 8;
+            label3.Text = "Cpf:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(169, 147);
+            label4.Name = "label4";
+            label4.Size = new Size(56, 15);
+            label4.TabIndex = 9;
+            label4.Text = "Endereço";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(438, 282);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(linkLabel1);
             Controls.Add(textBox4);
             Controls.Add(textBox3);
@@ -111,5 +155,9 @@
         private TextBox textBox3;
         private TextBox textBox4;
         private LinkLabel linkLabel1;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
     }
 }

@@ -15,12 +15,12 @@ namespace Ex04
         {
             InitializeComponent();
         }
-        public long CPF;
+        
         ApiService apiService = new ApiService();
         List<Cliente> clientes = new List<Cliente>();
         private void button1_Click(object sender, EventArgs e)
         {
-            CPF = long.Parse(textBox1.Text);
+            string CPF = textBox1.Text;
             if (clientes.Exists(c => c.cpf == CPF))
             {
                 Cliente cliente = clientes.Find(c => c.cpf == CPF);
