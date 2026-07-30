@@ -1,7 +1,7 @@
 ﻿
 using Api4;
 using AssistenciaApi.Context;
-using AssistenciaApi.Interface;
+using AssistenciaApi.Interface.Repository;
 
 namespace AssistenciaApi.Repository
 {

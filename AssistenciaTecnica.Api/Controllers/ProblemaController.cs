@@ -7,9 +7,9 @@ namespace Api4.Controllers
     [Route("[controller]")]
     public class ProblemaController : Controller
     {
-        private readonly ServiceProblema _service;
+        private readonly ServiceOrdem _service;
 
-        public ProblemaController(ServiceProblema service)
+        public ProblemaController(ServiceOrdem service)
         {
             _service = service;
 

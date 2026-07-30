@@ -1,7 +1,8 @@
 
 using Api4.Controllers;
 using AssistenciaApi.Context;
-using AssistenciaApi.Interface;
+using AssistenciaApi.Interface.Repository;
+using AssistenciaApi.Interface.Service;
 using AssistenciaApi.Repository;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,11 +26,15 @@ namespace Api4
 
             builder.Services.AddScoped<ServiceCliente>();
 
-            builder.Services.AddScoped<ServiceProblema>();
+            builder.Services.AddScoped<ServiceOrdem>();
 
             builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 
             builder.Services.AddScoped<IServicoRepository, ServicoRepository>();
+
+            builder.Services.AddScoped<IClienteService, ServiceCliente>();
+
+            builder.Services.AddScoped<IOrdemService, ServiceOrdem>();
 
             var app = builder.Build();
 

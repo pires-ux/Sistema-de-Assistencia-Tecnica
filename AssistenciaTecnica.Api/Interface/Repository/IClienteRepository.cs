@@ -1,6 +1,6 @@
 ﻿using Api4;
 
-namespace AssistenciaApi.Interface
+namespace AssistenciaApi.Interface.Repository
 {
     public interface IClienteRepository
     {
