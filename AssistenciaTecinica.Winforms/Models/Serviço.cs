@@ -11,29 +11,22 @@ namespace ex04
 
         }
         public int Id { get; set; }
-        public string Cliente { get; set; }
-        public int IdCliente { get; set; }
         public string Aparelho { get; set; }
         public string Descrição { get; set; }
         public DateOnly Data { get; set; }
         public string Status { get; set; }
         public decimal Valor {  get; set; }
 
-        public Serviço(int id, string nomeCliente, int idcliente, string aparelho, string descrição, DateOnly data, string status, decimal valor)
+        public Cliente Cliente { get; set; }
+
+        public Serviço(int id, string aparelho, string descrição, DateOnly data, string status, decimal valor)
         {
             Id = id;
-            Cliente = nomeCliente;
-            IdCliente = idcliente;
             Aparelho = aparelho;
             Descrição = descrição;
             Data = data;
             Status = status;
             Valor = valor;
-        }
-
-        public override string ToString()
-        {
-            return $"cliente: {Cliente} - aparelho: {Aparelho} - problema: {Descrição} - data: {Data} - status: {Status}";
         }
     }
 }

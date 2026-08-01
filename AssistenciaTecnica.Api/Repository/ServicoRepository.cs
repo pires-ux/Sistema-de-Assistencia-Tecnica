@@ -14,7 +14,7 @@ namespace AssistenciaApi.Repository
         }
 
 
-        public List<OrdemDeServico> Listar()
+        public List<OrdemDeServico> Listar(int idcliente)
         {
             List<OrdemDeServico> ordems = new List<OrdemDeServico>();
             ordems = _context.OrdemDeServicos.ToList();

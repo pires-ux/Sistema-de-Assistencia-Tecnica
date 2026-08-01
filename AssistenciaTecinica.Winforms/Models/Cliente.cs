@@ -26,9 +26,6 @@ namespace ex04
             endereco = Endereco;
         }
 
-        public override string ToString()
-        {
-            return $"Id: {id}, Nome: {nome}, Telefone: {telefone}, Cpf: {cpf}, Endereco: {endereco}";
-        }
+        public List<Serviço> Serviços { get; set; }
     }
 }

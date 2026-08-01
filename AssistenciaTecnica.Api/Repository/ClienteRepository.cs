@@ -28,5 +28,11 @@ namespace AssistenciaApi.Repository
             Cliente cliente = _context.Clientes.Find(id);
             return cliente;
         }
+
+        public void Criar(Cliente cliente)
+        {
+            _context.Clientes.Add(cliente);
+            _context.SaveChanges();
+        }
     }
 }

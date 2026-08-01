@@ -19,15 +19,14 @@ namespace Api4.Controllers
         [HttpGet("{idcliente}")]
         public List<OrdemDeServico> Get(int idcliente)
         {
-            serviços = _service.Get(idcliente);
+            serviços = _service.Listar(idcliente);
             return serviços;
         }
 
         [HttpPost]
         public IActionResult Post(OrdemDeServico ordem)
         {
-            _service.Post(ordem);
-            return Ok(ordem);
+            return BadRequest();
         }
 
 

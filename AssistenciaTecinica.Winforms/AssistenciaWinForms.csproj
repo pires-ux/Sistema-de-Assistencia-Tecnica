@@ -12,4 +12,8 @@
     <Compile Remove="Service\Form3Service.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOs\" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AssistenciaApi.DTOs;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Api4.Controllers
 {
@@ -25,17 +26,13 @@ namespace Api4.Controllers
         [HttpGet("{id}")]
         public IActionResult EncontrarUsuario(int id)
         {
-            usuarios = _service.EncontrarUsuario(id);
-            return Ok(usuarios);
+            Cliente cliente = _service.Mostrar(id);
+            return Ok(cliente);
         }
 
         [HttpPost]
-        public IActionResult Criar(Cliente cliente)
-        {                    
-            if (!_service.VerificarUsuario(cliente)) return BadRequest("Dados do usuário inválidos.");
-            if (!_service.VerificarCpfExistente(cliente)) return BadRequest("CPF já cadastrado.");
-            if (!_service.VerificarTelefoneExistente(cliente)) return BadRequest("Telefone já cadastrado.");
-            
+        public IActionResult Criar(CriarClienteGto cliente)
+        {
             _service.Criar(cliente);
             return Ok(cliente);
         }

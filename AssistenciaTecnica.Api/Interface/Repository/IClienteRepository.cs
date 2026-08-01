@@ -7,5 +7,7 @@ namespace AssistenciaApi.Interface.Repository
         public List<Cliente> Listar();
         
         public Cliente Mostrar(int id);
+
+        public void Criar(Cliente cliente);
     }
 }

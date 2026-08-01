@@ -13,9 +13,9 @@ namespace Api4
         }
 
         List<OrdemDeServico> serviços = new List<OrdemDeServico>();
-        public List<OrdemDeServico> Listar()
+        public List<OrdemDeServico> Listar(int clienteid)
         {
-            serviços = _repository.Listar();
+            serviços = _repository.Listar(clienteid);
             return serviços;
         }
 

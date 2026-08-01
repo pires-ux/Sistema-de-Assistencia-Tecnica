@@ -1,8 +1,8 @@
-﻿namespace Api4
+﻿namespace AssistenciaApi.DTOs
 {
-    public class Cliente
+    public class CriarClienteGto
     {
-        public Cliente() { }
+        public CriarClienteGto() { }
 
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -11,7 +11,7 @@
         public string Endereco { get; set; }
 
 
-        public Cliente(int id, string nome, string telefone, string cpf, string endereco)
+        public CriarClienteGto(int id, string nome, string telefone, string cpf, string endereco)
         {
             Id = id;
             Nome = nome;
@@ -19,7 +19,5 @@
             Cpf = cpf;
             Endereco = endereco;
         }
-
-        public List<OrdemDeServico> Servico { get; set; }
     }
 }

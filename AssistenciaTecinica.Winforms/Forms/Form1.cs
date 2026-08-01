@@ -25,7 +25,10 @@ namespace Ex04
             string cpf = textBox3.Text;
             string endereco = textBox4.Text;
 
-            Cliente cliente = new Cliente(0, nome, telefone, cpf, endereco);
+            Cliente cliente = new Cliente(0, nome, telefone, cpf, endereco)
+            {
+                Serviços = new List<Serviço>()
+            };
 
             MessageBox.Show(await service.CreateCliente(cliente));
         }

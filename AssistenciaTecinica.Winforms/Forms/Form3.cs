@@ -46,7 +46,16 @@ namespace ex04
             DateTime data = DateTime.Now;
             DateOnly dia = DateOnly.FromDateTime(data);
             MessageBox.Show(dia.ToString());
-            Serviço serviço = new Serviço(0, nome, _cliente.id, item, descrição, dia, "Aberto", 0);
+            Serviço serviço = new Serviço()
+            {
+                Id = 0,
+                Aparelho = item,
+                Descrição = descrição,
+                Data = dia,
+                Status = "Aberto",
+                Valor = 0,
+                Cliente = _cliente
+            };
             MessageBox.Show(await apiService.CriarServiço(serviço));
             listar();
             

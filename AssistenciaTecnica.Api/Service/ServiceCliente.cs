@@ -1,4 +1,5 @@
-﻿using AssistenciaApi.Interface.Repository;
+﻿using AssistenciaApi.DTOs;
+using AssistenciaApi.Interface.Repository;
 using AssistenciaApi.Interface.Service;
 
 namespace Api4
@@ -7,6 +8,7 @@ namespace Api4
     {
         private readonly IClienteRepository _repository;
 
+        List<Cliente> clientes = new List<Cliente>();
         public ServiceCliente(IClienteRepository repository)
         {
             _repository = repository;
@@ -22,5 +24,22 @@ namespace Api4
             return _repository.Mostrar(id);
         }
 
+        public void Criar(CriarClienteGto clienteGto)
+        {
+            Cliente cliente = new Cliente()
+            {
+                Id = clienteGto.Id,
+                Nome = clienteGto.Nome,
+                Cpf = clienteGto.Cpf,
+                Endereco = clienteGto.Endereco,
+                Telefone = clienteGto.Telefone,
+            };
+            _repository.Criar(cliente);
+        }
+
+        public bool VerificarNome(CriarClienteGto clienteGto)
+        { 
+            return false;
+        }
     }
 }
