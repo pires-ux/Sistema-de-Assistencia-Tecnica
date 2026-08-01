@@ -37,9 +37,24 @@ namespace Api4
             _repository.Criar(cliente);
         }
 
-        public bool VerificarNome(CriarClienteGto clienteGto)
+        public bool VerificarTelefone(CriarClienteGto clienteGto)
         { 
+            if(clientes.Any(c => c.Telefone == clienteGto.Telefone))
+            {
+                return true;
+            }
+            
             return false;
         }
+
+        public bool VerificarCpf(CriarClienteGto clienteGto)
+        {
+            if (clientes.Any(c => c.Cpf == clienteGto.Cpf))
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

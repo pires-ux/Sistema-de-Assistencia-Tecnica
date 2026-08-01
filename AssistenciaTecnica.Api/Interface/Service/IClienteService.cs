@@ -11,12 +11,9 @@ namespace AssistenciaApi.Interface.Service
 
         public void Criar(CriarClienteGto clienteGto);
 
-        public bool VerificarNome(CriarClienteGto clienteGto);
-
         public bool VerificarTelefone(CriarClienteGto clienteGto);
 
         public bool VerificarCpf(CriarClienteGto clienteGto);
 
-        public bool VerificarEndereco(CriarClienteGto clienteGto);
     }
 }

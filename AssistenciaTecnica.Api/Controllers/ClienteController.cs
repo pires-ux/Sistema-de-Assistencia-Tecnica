@@ -33,6 +33,14 @@ namespace Api4.Controllers
         [HttpPost]
         public IActionResult Criar(CriarClienteGto cliente)
         {
+            if(_service.VerificarCpf(cliente))
+            {
+                return BadRequest("CPF já cadastrado.");
+            }
+            if (_service.VerificarTelefone(cliente))
+            {
+                return BadRequest("Telefone já cadastrado.");
+            }
             _service.Criar(cliente);
             return Ok(cliente);
         }
