@@ -14,7 +14,7 @@ namespace ex04
 
         Aparelho aparelho = new Aparelho();
         List<Serviço> serviços = new List<Serviço>();
-        ApiService apiService = new ApiService();
+        ClienteApi apiService = new ClienteApi();
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 

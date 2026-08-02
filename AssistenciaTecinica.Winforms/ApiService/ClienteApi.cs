@@ -5,11 +5,11 @@ using System.Text.Json;
 
 namespace ex04
 {
-    internal class ApiService
+    internal class ClienteApi
     {
         private readonly HttpClient _httpClient;
 
-        public ApiService()
+        public ClienteApi()
         {
             _httpClient = new HttpClient();
         }

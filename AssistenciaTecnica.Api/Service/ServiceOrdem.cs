@@ -1,4 +1,5 @@
-﻿using AssistenciaApi.Interface.Repository;
+﻿using AssistenciaApi.DTOs;
+using AssistenciaApi.Interface.Repository;
 using AssistenciaApi.Interface.Service;
 
 namespace Api4
@@ -12,10 +13,19 @@ namespace Api4
             _repository = repository;
         }
 
-        List<OrdemDeServico> serviços = new List<OrdemDeServico>();
-        public List<OrdemDeServico> Listar(int clienteid)
+        List<ServicoMostraDto> serviços = new List<ServicoMostraDto>();
+        public List<ServicoMostraDto> Listar(int clienteid)
         {
-            serviços = _repository.Listar(clienteid);
+            foreach (var servico in _repository.Listar(clienteid))
+            {
+                serviços.Add(new ServicoMostraDto
+                {
+                    Aparelho = servico.Aparelho,
+                    Descricao = servico.Descrição,
+                    Valor = servico.Valor,
+                    Status = servico.Status
+                });
+            }
             return serviços;
         }
 

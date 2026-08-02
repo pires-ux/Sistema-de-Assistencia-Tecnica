@@ -16,7 +16,7 @@ namespace Ex04
             InitializeComponent();
         }
         
-        ApiService apiService = new ApiService();
+        ClienteApi apiService = new ClienteApi();
         List<Cliente> clientes = new List<Cliente>();
         private void button1_Click(object sender, EventArgs e)
         {

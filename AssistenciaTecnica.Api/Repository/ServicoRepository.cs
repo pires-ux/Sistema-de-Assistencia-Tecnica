@@ -27,10 +27,12 @@ namespace AssistenciaApi.Repository
             return ordem;
         }
 
-        public void Adicionar(OrdemDeServico ordem)
+        public void Criar(OrdemDeServico ordem)
         {
             _context.OrdemDeServicos.Add(ordem);
             _context.SaveChanges();
         }
+
+
     }
 }

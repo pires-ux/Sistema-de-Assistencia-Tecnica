@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AssistenciaApi.DTOs;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api4.Controllers
@@ -15,12 +16,16 @@ namespace Api4.Controllers
 
         }
 
-        List<OrdemDeServico> serviços = new List<OrdemDeServico>();
+        List<ServicoMostraDto> serviços = new List<ServicoMostraDto>();
         [HttpGet("{idcliente}")]
-        public List<OrdemDeServico> Get(int idcliente)
+        public IActionResult Get(int idcliente)
         {
             serviços = _service.Listar(idcliente);
-            return serviços;
+            if(serviços == null)
+            {
+                return NotFound();
+            }
+            return Ok(serviços);
         }
 
         [HttpPost]

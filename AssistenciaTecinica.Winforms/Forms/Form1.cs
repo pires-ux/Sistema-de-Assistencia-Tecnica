@@ -9,7 +9,7 @@ namespace Ex04
         {
             InitializeComponent();
         }
-        ApiService service = new ApiService();
+        ClienteApi service = new ClienteApi();
         List<Cliente> clientes = new List<Cliente>();
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
