@@ -9,11 +9,11 @@ namespace AssistenciaApi.Interface.Service
 
         public Cliente Mostrar(int id);
 
-        public void Criar(CriarClienteGto clienteGto);
+        public void Criar(CriarClienteDto clienteGto);
 
-        public bool VerificarTelefone(CriarClienteGto clienteGto);
+        public bool VerificarTelefone(CriarClienteDto clienteGto);
 
-        public bool VerificarCpf(CriarClienteGto clienteGto);
+        public bool VerificarCpf(CriarClienteDto clienteGto);
 
     }
 }

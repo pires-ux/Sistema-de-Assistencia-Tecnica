@@ -31,7 +31,7 @@ namespace Api4.Controllers
         }
 
         [HttpPost]
-        public IActionResult Criar(CriarClienteGto cliente)
+        public IActionResult Criar(CriarClienteDto cliente)
         {
             if(_service.VerificarCpf(cliente))
             {

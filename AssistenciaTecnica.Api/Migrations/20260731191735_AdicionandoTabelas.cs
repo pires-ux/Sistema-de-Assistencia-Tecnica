@@ -81,12 +81,5 @@ namespace AssistenciaApi.Migrations
             migrationBuilder.DropTable(
                 name: "Clientes");
         }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Cliente>()
-                .HasIndex(c => c.Cpf)
-                .IsUnique();
-        }
     }
 }

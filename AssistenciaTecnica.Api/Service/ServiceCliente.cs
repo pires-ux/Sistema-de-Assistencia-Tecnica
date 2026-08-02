@@ -24,7 +24,7 @@ namespace Api4
             return _repository.Mostrar(id);
         }
 
-        public void Criar(CriarClienteGto clienteGto)
+        public void Criar(CriarClienteDto clienteGto)
         {
             Cliente cliente = new Cliente()
             {
@@ -37,7 +37,7 @@ namespace Api4
             _repository.Criar(cliente);
         }
 
-        public bool VerificarTelefone(CriarClienteGto clienteGto)
+        public bool VerificarTelefone(CriarClienteDto clienteGto)
         { 
             if(clientes.Any(c => c.Telefone == clienteGto.Telefone))
             {
@@ -47,7 +47,7 @@ namespace Api4
             return false;
         }
 
-        public bool VerificarCpf(CriarClienteGto clienteGto)
+        public bool VerificarCpf(CriarClienteDto clienteGto)
         {
             if (clientes.Any(c => c.Cpf == clienteGto.Cpf))
             {

@@ -25,6 +25,11 @@ namespace Api4
             return ordem;
         }
 
-        
+        public void Criar(OrdemDeServico ordem)
+        {
+            _repository.Criar(ordem);
+        }
+
+
     }
 }

@@ -7,5 +7,7 @@ namespace AssistenciaApi.Interface.Repository
         public List<OrdemDeServico> Listar(int clienteid);
 
         public OrdemDeServico Mostrar(int id);
+
+        public void Criar(OrdemDeServico ordem);
     }
 }

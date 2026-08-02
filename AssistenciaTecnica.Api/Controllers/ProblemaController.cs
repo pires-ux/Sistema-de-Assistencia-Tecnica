@@ -26,7 +26,8 @@ namespace Api4.Controllers
         [HttpPost]
         public IActionResult Post(OrdemDeServico ordem)
         {
-            return BadRequest();
+            _service.Criar(ordem);
+            return Ok(ordem);
         }
 
 

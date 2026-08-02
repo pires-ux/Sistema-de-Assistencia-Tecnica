@@ -5,7 +5,7 @@ using AssistenciaApi.Interface.Repository;
 
 namespace AssistenciaApi.Repository
 {
-    public class ServicoRepository: IServicoRepository
+    public class ServicoRepository : IServicoRepository
     {
         private readonly AssistenciaContext _context;
         public ServicoRepository(AssistenciaContext context)
@@ -25,6 +25,12 @@ namespace AssistenciaApi.Repository
         {
             OrdemDeServico ordem = _context.OrdemDeServicos.Find(id);
             return ordem;
+        }
+
+        public void Adicionar(OrdemDeServico ordem)
+        {
+            _context.OrdemDeServicos.Add(ordem);
+            _context.SaveChanges();
         }
     }
 }
