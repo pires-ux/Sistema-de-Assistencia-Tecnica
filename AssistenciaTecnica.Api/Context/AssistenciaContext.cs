@@ -10,5 +10,14 @@ namespace AssistenciaApi.Context
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<OrdemDeServico> OrdemDeServicos { get; set; }
 
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<OrdemDeServico>()
+                .Property(x => x.Valor)
+                .HasPrecision(10, 2);
+        }
     }
 }
