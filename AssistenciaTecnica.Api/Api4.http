@@ -1,4 +1,4 @@
- @Api4_HostAddress = http://localhost:5156
+@Api4_HostAddress = http://localhost:5156
 
 ///Cliente
 GET {{Api4_HostAddress}}/Cliente
@@ -21,3 +21,14 @@ Accept: applicatio/json
 ###
 POST {{Api4_HostAddress}}/Problema
 Content-Type: applicatio/json
+
+{
+    "id": 0,
+    "cliente": "nome",
+    "idCliente": 1,
+    "aparelho": "Computador",
+    "descrição": "não liga",
+    "data": "2026-07-15",
+    "status": "Aberta",
+    "valor": 0
+}

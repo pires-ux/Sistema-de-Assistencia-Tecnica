@@ -22,9 +22,9 @@ namespace Api4.Controllers
         {
             serviços = _service.Listar(idcliente);
             if(serviços == null)
-            {
+        {
                 return NotFound();
-            }
+        }
             return Ok(serviços);
         }
 

@@ -59,7 +59,7 @@ namespace ex04
             };
             MessageBox.Show(await ServiceApi.CriarServiço(serviço));
             listar();
-
+            
 
         }
 
@@ -85,7 +85,7 @@ namespace ex04
             {
                 dataGridView1.Rows.Add(item.Aparelho, item.Descricao, item.Data, item.Valor, item.Status);
             }
-        }
+            }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

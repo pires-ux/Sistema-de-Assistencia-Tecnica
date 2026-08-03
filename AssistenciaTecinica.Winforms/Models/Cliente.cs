@@ -25,5 +25,10 @@ namespace ex04
             cpf = Cpf;
             endereco = Endereco;
         }
+
+        public override string ToString()
+        {
+            return $"Id: {id}, Nome: {nome}, Telefone: {telefone}, Cpf: {cpf}, Endereco: {endereco}";
+        }
     }
 }
