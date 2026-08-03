@@ -7,6 +7,7 @@ namespace AssistenciaWinForms.DTOs
         public ServicoDTO() { }
         public string Aparelho { get; set; }
         public string Descricao { get; set; }
+        public DateOnly Data { get; set; } = DateOnly.FromDateTime(DateTime.Now);
         public decimal Valor { get; set; }
         public string Status { get; set; }
 
