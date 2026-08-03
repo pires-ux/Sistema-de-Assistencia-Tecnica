@@ -15,7 +15,7 @@ Content-Type: application/json
 
 
 ###
-GET {{Api4_HostAddress}}/Problema/2
+GET {{Api4_HostAddress}}/Problema/1
 Accept: applicatio/json
 
 ###

@@ -16,8 +16,7 @@ namespace ex04
         public DateOnly Data { get; set; }
         public string Status { get; set; }
         public decimal Valor {  get; set; }
-
-        public Cliente Cliente { get; set; }
+        public int ClienteId { get; set; }
 
         public Serviço(int id, string aparelho, string descrição, DateOnly data, string status, decimal valor)
         {

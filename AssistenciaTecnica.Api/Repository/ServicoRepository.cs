@@ -2,6 +2,7 @@
 using Api4;
 using AssistenciaApi.Context;
 using AssistenciaApi.Interface.Repository;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AssistenciaApi.Repository
 {
@@ -31,6 +32,7 @@ namespace AssistenciaApi.Repository
         {
             _context.OrdemDeServicos.Add(ordem);
             _context.SaveChanges();
+             
         }
 
 

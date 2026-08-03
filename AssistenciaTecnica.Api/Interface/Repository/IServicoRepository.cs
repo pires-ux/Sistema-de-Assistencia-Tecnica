@@ -1,4 +1,5 @@
 ﻿using Api4;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AssistenciaApi.Interface.Repository
 {

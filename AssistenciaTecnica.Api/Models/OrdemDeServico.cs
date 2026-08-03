@@ -13,7 +13,8 @@
         public DateTime Data { get; set; }
         public string Status { get; set; }
         public decimal Valor { get; set; }
-        public Cliente Cliente { get; set; }
+        public int ClienteId { get; set; } 
+        public Cliente? Cliente { get; set; }
 
         public OrdemDeServico(int id, string aparelho, string descrição, DateTime data, string status, decimal valor)
         {

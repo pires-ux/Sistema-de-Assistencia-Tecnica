@@ -25,7 +25,5 @@ namespace ex04
             cpf = Cpf;
             endereco = Endereco;
         }
-
-        public List<Serviço> Serviços { get; set; }
     }
 }

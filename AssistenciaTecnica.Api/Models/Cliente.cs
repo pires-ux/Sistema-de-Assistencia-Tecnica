@@ -20,6 +20,6 @@
             Endereco = endereco;
         }
 
-        public List<OrdemDeServico> Servico { get; set; }
+        public List<OrdemDeServico> Servico { get; set; } = new List<OrdemDeServico>();
     }
 }

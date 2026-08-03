@@ -32,7 +32,7 @@ namespace Api4.Controllers
         public IActionResult Post(OrdemDeServico ordem)
         {
             _service.Criar(ordem);
-            return Ok(ordem);
+            return Ok("criada com sucesso!");
         }
 
 

@@ -1,4 +1,6 @@
 ﻿
+using AssistenciaWinForms.ApiService;
+using AssistenciaWinForms.DTOs;
 using System.Collections.Generic;
 
 namespace ex04
@@ -13,8 +15,8 @@ namespace ex04
         }
 
         Aparelho aparelho = new Aparelho();
-        List<Serviço> serviços = new List<Serviço>();
-        ClienteApi apiService = new ClienteApi();
+        List<ServicoDTO> serviços = new List<ServicoDTO>();
+        ServiceApi ServiceApi = new ServiceApi();
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -45,18 +47,17 @@ namespace ex04
             string item = aparelho.ToString();
             DateTime data = DateTime.Now;
             DateOnly dia = DateOnly.FromDateTime(data);
-            MessageBox.Show(dia.ToString());
             Serviço serviço = new Serviço()
             {
                 Id = 0,
+                ClienteId = _cliente.id,
                 Aparelho = item,
                 Descrição = descrição,
                 Data = dia,
                 Status = "Aberto",
                 Valor = 0,
-                Cliente = _cliente
             };
-            MessageBox.Show(await apiService.CriarServiço(serviço));
+            MessageBox.Show(await ServiceApi.CriarServiço(serviço));
             listar();
             
 
@@ -79,7 +80,7 @@ namespace ex04
         {
             serviços.Clear();
             listBox1.Items.Clear();
-            serviços = await apiService.GetServiço(_cliente.id);
+            serviços = await ServiceApi.GetServiço(_cliente.id);
             foreach (var item in serviços)
             {
                 listBox1.Items.Add(item.ToString());

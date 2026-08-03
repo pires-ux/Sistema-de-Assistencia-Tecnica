@@ -71,48 +71,6 @@ namespace ex04
 
 
 
-        public async Task<List<Serviço>> GetServiço(int id)
-        {
-            HttpResponseMessage response = await _httpClient.GetAsync($"http://localhost:5156/Problema/{id}");
-
-            string json = await response.Content.ReadAsStringAsync();
-
-            var opções = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
-
-            List<Serviço> serviços = JsonSerializer.Deserialize<List<Serviço>>(json, opções);
-
-            if (response.IsSuccessStatusCode)
-            {
-                return serviços;
-                
-            }
-            else
-            {
-                throw new Exception($"Erro ao listar livros: {response.StatusCode}");
-            }
-            
-        }
-
-        public async Task<string> CriarServiço(Serviço serviço)
-        {
-            string json = JsonSerializer.Serialize(serviço);
-            MessageBox.Show(json);
-            StringContent content = new StringContent (json, Encoding.UTF8, "application/json");
-
-            HttpResponseMessage response = await _httpClient.PostAsync("http://localhost:5156/Problema", content);
-
-            if (response.IsSuccessStatusCode)
-            {
-                return "defeito mandado";
-            }
-            else
-            {
-                string erro = await response.Content.ReadAsStringAsync();
-                return $"Erro: {(int)response.StatusCode}\n{erro}";
-            }
-        }
+       
     }
 }
