@@ -23,7 +23,6 @@ namespace ex04
         public Serviço(int id, string aparelho, string descrição, DateOnly data, string status, decimal valor)
         {
             Id = id;
-            ClienteId = clienteId;
             Aparelho = aparelho;
             Descrição = descrição;
             Data = data;
