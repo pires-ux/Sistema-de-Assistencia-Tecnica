@@ -16,16 +16,7 @@ namespace Api4
         List<ServicoMostraDto> serviços = new List<ServicoMostraDto>();
         public List<ServicoMostraDto> Listar(int clienteid)
         {
-            foreach (var servico in _repository.Listar(clienteid))
-            {
-                serviços.Add(new ServicoMostraDto
-                {
-                    Aparelho = servico.Aparelho,
-                    Descricao = servico.Descrição,
-                    Valor = servico.Valor,
-                    Status = servico.Status
-                });
-            }
+            serviços = _repository.Listar(clienteid);
             return serviços;
         }
 
