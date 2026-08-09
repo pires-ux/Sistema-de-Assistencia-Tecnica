@@ -1,6 +1,7 @@
 ﻿
 using Api4;
 using AssistenciaApi.Context;
+using AssistenciaApi.DTOs;
 using AssistenciaApi.Interface.Repository;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,10 +16,16 @@ namespace AssistenciaApi.Repository
         }
 
 
-        public List<OrdemDeServico> Listar(int idcliente)
+        public List<ServicoMostraDto> Listar(int idcliente)
         {
-            List<OrdemDeServico> ordems = new List<OrdemDeServico>();
-            ordems = _context.OrdemDeServicos.ToList();
+            List<ServicoMostraDto> ordems = new List<ServicoMostraDto>();
+            ordems = _context.OrdemDeServicos.Select(x => new ServicoMostraDto
+            {
+                Aparelho = x.Aparelho,
+                Descricao = x.Descrição,
+                Valor = x.Valor,
+                Status = x.Status
+            }).ToList();
             return ordems;
         }
 
