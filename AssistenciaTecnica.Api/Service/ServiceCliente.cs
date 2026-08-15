@@ -30,7 +30,7 @@ namespace Api4
             {
                 Id = clienteGto.Id,
                 Nome = clienteGto.Nome,
-                Cpf = clienteGto.Cpf,
+                Email = clienteGto.Email,
                 Endereco = clienteGto.Endereco,
                 Telefone = clienteGto.Telefone,
             };
@@ -47,13 +47,25 @@ namespace Api4
             return false;
         }
 
-        public bool VerificarCpf(CriarClienteDto clienteGto)
+        public bool VerificarEmail(CriarClienteDto clienteGto)
         {
-            if (clientes.Any(c => c.Cpf == clienteGto.Cpf))
+            if (clientes.Any(c => c.Email == clienteGto.Email))
             {
                 return true;
             }
             return false;
+        }
+
+        public bool Login(LoginClienteDTO login)
+        {
+            if (_repository.Login(login))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }

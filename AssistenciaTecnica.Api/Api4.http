@@ -13,6 +13,14 @@ POST {{Api4_HostAddress}}/Cliente
 Content-Type: application/json
 
 
+###
+POST {{Api4_HostAddress}}/Cliente/login
+Content-Type: application/json
+
+
+
+
+
 
 ###
 GET {{Api4_HostAddress}}/Problema/1

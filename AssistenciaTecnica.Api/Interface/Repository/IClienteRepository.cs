@@ -1,4 +1,5 @@
 ﻿using Api4;
+using AssistenciaApi.DTOs;
 
 namespace AssistenciaApi.Interface.Repository
 {
@@ -9,5 +10,7 @@ namespace AssistenciaApi.Interface.Repository
         public Cliente Mostrar(int id);
 
         public void Criar(Cliente cliente);
+
+        public bool Login(LoginClienteDTO login);
     }
 }

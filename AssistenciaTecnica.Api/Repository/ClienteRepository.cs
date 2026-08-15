@@ -1,5 +1,6 @@
 ﻿using Api4;
 using AssistenciaApi.Context;
+using AssistenciaApi.DTOs;
 using AssistenciaApi.Interface.Repository;
 using ZstdSharp.Unsafe;
 
@@ -33,6 +34,12 @@ namespace AssistenciaApi.Repository
         {
             _context.Clientes.Add(cliente);
             _context.SaveChanges();
+        }
+
+        public bool Login(LoginClienteDTO login)
+        {
+            bool resultado = _context.Clientes.Any(c => c.Email == login.Email && c.Senha == login.Senha);
+            return resultado;
         }
     }
 }

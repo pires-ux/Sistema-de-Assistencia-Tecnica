@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AssistenciaWinForms.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
@@ -70,7 +71,7 @@ namespace ex04
         }
 
 
-
+        //
         public async Task<List<Serviço>> GetServiço(int id)
         {
             HttpResponseMessage response = await _httpClient.GetAsync($"http://localhost:5156/Problema/{id}");
@@ -96,6 +97,7 @@ namespace ex04
             
         }
 
+        //criar serviço
         public async Task<string> CriarServiço(Serviço serviço)
         {
             string json = JsonSerializer.Serialize(serviço);
@@ -112,6 +114,24 @@ namespace ex04
             {
                 string erro = await response.Content.ReadAsStringAsync();
                 return $"Erro: {(int)response.StatusCode}\n{erro}";
+            }
+        }
+
+
+        //Login
+        public async Task<bool> Login(LoginClienteDTO login)
+        {
+            string json = JsonSerializer.Serialize(login);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _httpClient.PostAsync("http://localhost:5156/Cliente/login", content);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                string erro = await response.Content.ReadAsStringAsync();
+                return false;
             }
         }
     }

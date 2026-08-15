@@ -1,4 +1,5 @@
-﻿using ex04;
+﻿using AssistenciaWinForms.DTOs;
+using ex04;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,14 +17,19 @@ namespace Ex04
             InitializeComponent();
         }
         
-        ClienteApi apiService = new ClienteApi();
+        ApiService apiService = new ApiService();
         List<Cliente> clientes = new List<Cliente>();
-        private void button1_Click(object sender, EventArgs e)
+
+        private async void button1_Click(object sender, EventArgs e)
         {
-            string CPF = textBox1.Text;
-            if (clientes.Exists(c => c.cpf == CPF))
+            LoginClienteDTO login = new LoginClienteDTO()
             {
-                Cliente cliente = clientes.Find(c => c.cpf == CPF);
+                email = textBox1.Text,
+                senha = textBox2.Text
+            };
+            if (await apiService.Login(login))
+            {
+                Cliente cliente = clientes.Find(c => c.email == login.email);
                 Form2.ActiveForm.Hide();
                 Form3 form3 = new Form3(cliente);
                 form3.Show();
