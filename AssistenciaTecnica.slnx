@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="AssistenciaFuncionarios/AssistenciaFuncionarios.csproj" Id="dee937d2-16d4-44ec-8533-b61c50697709" />
   <Project Path="AssistenciaTecinica.Winforms/AssistenciaCliente.csproj" />
   <Project Path="AssistenciaTecnica.Api/AssistenciaApi.csproj" />
 </Solution>
