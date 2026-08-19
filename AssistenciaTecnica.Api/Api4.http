@@ -19,6 +19,24 @@ Content-Type: application/json
 
 
 
+### CRIAÇÃO DE CONTA DE FUNCIONARIOS
+POST {{Api4_HostAddress}}/Funcionario
+Content-Type: application/json
+{
+    "id": 0,
+    "Nome": "Luiz",
+    "Telefone": "14998178552",
+    "Email": "Luiz@gmail.com",
+    "Senha": "123456"
+}
+
+###
+POST {{Api4_HostAddress}}/Funcionario/Login
+Content-Type: Application/json
+{
+    "Email": "Luiz@gmail.com",
+    "Senha": "123456"
+}
 
 
 
