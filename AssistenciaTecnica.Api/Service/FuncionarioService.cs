@@ -21,7 +21,6 @@ namespace AssistenciaApi.Service
             {
                 Nome = cadastroDTO.Nome,
                 Email = cadastroDTO.Email,
-                Telefone = cadastroDTO.Telefone,
                 Senha = hash
             };
             _repository.Cadastro(funcionarios);

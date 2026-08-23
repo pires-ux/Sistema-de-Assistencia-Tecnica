@@ -45,6 +45,7 @@
             button1.TabIndex = 0;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // textBox1
             // 
@@ -72,27 +73,27 @@
             label1.AutoSize = true;
             label1.Location = new Point(240, 88);
             label1.Name = "label1";
-            label1.Size = new Size(38, 15);
+            label1.Size = new Size(43, 15);
             label1.TabIndex = 4;
-            label1.Text = "label1";
+            label1.Text = "Nome:";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Location = new Point(240, 135);
             label2.Name = "label2";
-            label2.Size = new Size(38, 15);
+            label2.Size = new Size(39, 15);
             label2.TabIndex = 5;
-            label2.Text = "label2";
+            label2.Text = "Email:";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Location = new Point(240, 183);
             label3.Name = "label3";
-            label3.Size = new Size(38, 15);
+            label3.Size = new Size(42, 15);
             label3.TabIndex = 6;
-            label3.Text = "label3";
+            label3.Text = "Senha:";
             // 
             // Cadastro
             // 
