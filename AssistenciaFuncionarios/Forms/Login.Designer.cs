@@ -32,6 +32,8 @@
             textBox2 = new TextBox();
             button1 = new Button();
             linkLabel1 = new LinkLabel();
+            label1 = new Label();
+            label2 = new Label();
             SuspendLayout();
             // 
             // textBox1
@@ -69,11 +71,31 @@
             linkLabel1.Text = "Cadastrar";
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(233, 94);
+            label1.Name = "label1";
+            label1.Size = new Size(39, 15);
+            label1.TabIndex = 4;
+            label1.Text = "Email:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(233, 143);
+            label2.Name = "label2";
+            label2.Size = new Size(42, 15);
+            label2.TabIndex = 5;
+            label2.Text = "Senha:";
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(576, 321);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(linkLabel1);
             Controls.Add(button1);
             Controls.Add(textBox2);
@@ -90,5 +112,7 @@
         private TextBox textBox2;
         private Button button1;
         private LinkLabel linkLabel1;
+        private Label label1;
+        private Label label2;
     }
 }
