@@ -47,6 +47,18 @@ namespace AssistenciaFuncionarios.Service
             }
         }
 
+        public async Task<List<ServicoDTO>> ServicoListar()
+        {
+            HttpResponseMessage response = await _http.GetAsync("http://localhost:5156/Problema/Funcionario");
+            if (!response.IsSuccessStatusCode)
+            {
+                return null;
+            }
+            var json = await response.Content.ReadAsStringAsync();
+            var servico = JsonSerializer.Deserialize<List<ServicoDTO>>(json);
 
+            return servico;
+
+        }
     }
 }
