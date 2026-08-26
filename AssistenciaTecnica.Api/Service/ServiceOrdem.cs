@@ -14,23 +14,22 @@ namespace Api4
         }
 
         List<ServicoMostraDto> serviços = new List<ServicoMostraDto>();
-        public List<ServicoMostraDto> Listar(int clienteid)
+        public async Task<List<ServicoMostraDto>> ClienteListar(int clienteid)
         {
-            serviços = _repository.Listar(clienteid);
+            serviços = await _repository.ClienteListar(clienteid);
             return serviços;
         }
 
-        public OrdemDeServico Mostrar(int id)
-        {
-            OrdemDeServico ordem = _repository.Mostrar(id);
-            return ordem;
-        }
 
-        public void Criar(OrdemDeServico ordem)
+        public async void Criar(OrdemDeServico ordem)
         {
             _repository.Criar(ordem);
         }
 
-
+        public async Task<List<ServicoFuncionarioDTO>> FuncionarioListar()
+        {
+            var servico = await _repository.FuncionarioListar();
+            return servico;
+        }
     }
 }

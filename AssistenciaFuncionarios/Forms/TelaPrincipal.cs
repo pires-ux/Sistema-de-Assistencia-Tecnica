@@ -16,5 +16,11 @@ namespace AssistenciaFuncionarios
         {
             InitializeComponent();
         }
+
+
+        private void TelaPrincipal_Load(object sender, EventArgs e)
+        {
+            listView1.Items.AddRange();
+        }
     }
 }

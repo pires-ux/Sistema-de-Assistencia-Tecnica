@@ -5,10 +5,10 @@ namespace AssistenciaApi.Interface.Service
 {
     public interface IOrdemService
     {
-        public List<ServicoMostraDto> Listar(int clienteid);
-
-        public OrdemDeServico Mostrar(int id);
+        public Task<List<ServicoMostraDto>> ClienteListar(int clienteid);
 
         public void Criar(OrdemDeServico ordem);
+
+        public Task<List<ServicoFuncionarioDTO>> FuncionarioListar();
     }
 }

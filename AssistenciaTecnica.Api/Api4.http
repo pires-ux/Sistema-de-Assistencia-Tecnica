@@ -30,7 +30,7 @@ Content-Type: application/json
     "Senha": "123456"
 }
 
-###
+### LOGIN DE FUNCIONARIOS
 POST {{Api4_HostAddress}}/Funcionario/Login
 Content-Type: Application/json
 {
@@ -40,11 +40,13 @@ Content-Type: Application/json
 
 
 
-###
+### PROBLEMA PARTE CLIENTE
 GET {{Api4_HostAddress}}/Problema/1
 Accept: applicatio/json
 
-###
+
+
+### ADICIONAR SERVICO
 POST {{Api4_HostAddress}}/Problema
 Content-Type: applicatio/json
 
@@ -58,3 +60,8 @@ Content-Type: applicatio/json
     "status": "Aberta",
     "valor": 0
 }
+
+
+### PROBLEMA PARTE FUNCIONARIO
+GET {{Api4_HostAddress}}/Problema/Funcionario
+Accept: application/json

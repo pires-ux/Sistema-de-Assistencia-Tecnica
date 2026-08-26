@@ -16,10 +16,10 @@ namespace AssistenciaApi.Repository
         }
 
 
-        public List<ServicoMostraDto> Listar(int idcliente)
+        public async Task<List<ServicoMostraDto>> ClienteListar(int idcliente)
         {
-            List<ServicoMostraDto> ordems = new List<ServicoMostraDto>();
-            ordems = _context.OrdemDeServicos.Select(x => new ServicoMostraDto
+            
+            var ordems = _context.OrdemDeServicos.Select(x => new ServicoMostraDto
             {
                 Aparelho = x.Aparelho,
                 Descricao = x.Descrição,
@@ -29,19 +29,25 @@ namespace AssistenciaApi.Repository
             return ordems;
         }
 
-        public OrdemDeServico Mostrar(int id)
-        {
-            OrdemDeServico ordem = _context.OrdemDeServicos.Find(id);
-            return ordem;
-        }
 
-        public void Criar(OrdemDeServico ordem)
+        public async void Criar(OrdemDeServico ordem)
         {
             _context.OrdemDeServicos.Add(ordem);
             _context.SaveChanges();
              
         }
 
+        public async Task<List<ServicoFuncionarioDTO>> FuncionarioListar()
+        {
+            List<ServicoFuncionarioDTO> service = _context.OrdemDeServicos.Select(x => new ServicoFuncionarioDTO
+            {
+                Cliente = x.Cliente.Nome,
+                Aparelho = x.Aparelho,
+                Valor = x.Valor,
+                Status = x.Status
+            }).ToList();
 
+            return service;
+        }
     }
 }
