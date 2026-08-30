@@ -28,65 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listView1 = new ListView();
-            columnCliente = new ColumnHeader();
-            columnAparelho = new ColumnHeader();
-            columnValor = new ColumnHeader();
-            columnStatus = new ColumnHeader();
+            dataGridView1 = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Data = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // listView1
+            // dataGridView1
             // 
-            listView1.Columns.AddRange(new ColumnHeader[] { columnCliente, columnAparelho, columnValor, columnStatus });
-            listView1.Location = new Point(65, 119);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(405, 138);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Data, Column3, Column4 });
+            dataGridView1.Location = new Point(28, 119);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(543, 191);
+            dataGridView1.TabIndex = 0;
             // 
-            // columnCliente
+            // Column1
             // 
-            columnCliente.Text = "Cliente";
-            columnCliente.TextAlign = HorizontalAlignment.Center;
-            columnCliente.Width = 100;
+            Column1.HeaderText = "Cliente";
+            Column1.Name = "Column1";
             // 
-            // columnAparelho
+            // Column2
             // 
-            columnAparelho.Text = "Aparelho";
-            columnAparelho.TextAlign = HorizontalAlignment.Center;
-            columnAparelho.Width = 100;
+            Column2.HeaderText = "Aparelho";
+            Column2.Name = "Column2";
             // 
-            // columnValor
+            // Data
             // 
-            columnValor.Text = "Valor";
-            columnValor.TextAlign = HorizontalAlignment.Center;
-            columnValor.Width = 100;
+            Data.HeaderText = "Data";
+            Data.Name = "Data";
             // 
-            // columnStatus
+            // Column3
             // 
-            columnStatus.Text = "Status";
-            columnStatus.TextAlign = HorizontalAlignment.Center;
-            columnStatus.Width = 100;
+            Column3.HeaderText = "Valor";
+            Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "Status";
+            Column4.Name = "Column4";
             // 
             // TelaPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(619, 349);
-            Controls.Add(listView1);
+            Controls.Add(dataGridView1);
             Name = "TelaPrincipal";
             Text = "TelaPrincipal";
             Load += TelaPrincipal_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ListView listView1;
-        private ColumnHeader columnAparelho;
-        private ColumnHeader columnValor;
-        private ColumnHeader columnStatus;
-        private ColumnHeader columnCliente;
+
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Data;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
     }
 }

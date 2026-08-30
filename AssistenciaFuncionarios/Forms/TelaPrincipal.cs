@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AssistenciaFuncionarios.DTO;
+using AssistenciaFuncionarios.Service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,10 +19,22 @@ namespace AssistenciaFuncionarios
             InitializeComponent();
         }
 
+        ServiceApi api = new ServiceApi();
 
-        private void TelaPrincipal_Load(object sender, EventArgs e)
+        private async void TelaPrincipal_Load(object sender, EventArgs e)
         {
-            listView1.Items.AddRange();
+            await Listar();
+        }
+
+        public async Task Listar()
+        {
+            dataGridView1.Rows.Clear();
+            List<ServicoDTO> servico = await api.ServicoListar();
+            foreach(var serv in servico)
+            {
+                dataGridView1.Rows.Add(serv.Cliente, serv.Aparelho, serv.Valor, serv.Data, serv.Status);
+               
+            }
         }
     }
 }

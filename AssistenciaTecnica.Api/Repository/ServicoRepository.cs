@@ -42,8 +42,9 @@ namespace AssistenciaApi.Repository
             List<ServicoFuncionarioDTO> service = _context.OrdemDeServicos.Select(x => new ServicoFuncionarioDTO
             {
                 Cliente = x.Cliente.Nome,
-                Aparelho = x.Aparelho,
+                Aparelho = x.Aparelho,              
                 Valor = x.Valor,
+                Data = DateOnly.FromDateTime(x.Data),
                 Status = x.Status
             }).ToList();
 

@@ -52,13 +52,16 @@ namespace AssistenciaFuncionarios.Service
             HttpResponseMessage response = await _http.GetAsync("http://localhost:5156/Problema/Funcionario");
             if (!response.IsSuccessStatusCode)
             {
-                return null;
+                return new List<ServicoDTO>();
             }
             var json = await response.Content.ReadAsStringAsync();
-            var servico = JsonSerializer.Deserialize<List<ServicoDTO>>(json);
-
+            var opções = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            var servico = JsonSerializer.Deserialize<List<ServicoDTO>>(json, opções);
             return servico;
 
-        }
+        }    
     }
 }
