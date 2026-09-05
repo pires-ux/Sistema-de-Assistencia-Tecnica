@@ -67,18 +67,21 @@
             // 
             Cliente.HeaderText = "Cliente";
             Cliente.Name = "Cliente";
+            Cliente.ReadOnly = true;
             Cliente.Width = 69;
             // 
             // Aparelho
             // 
             Aparelho.HeaderText = "Aparelho";
             Aparelho.Name = "Aparelho";
+            Aparelho.ReadOnly = true;
             Aparelho.Width = 80;
             // 
             // Data
             // 
             Data.HeaderText = "Data";
             Data.Name = "Data";
+            Data.ReadOnly = true;
             Data.Width = 56;
             // 
             // Valor
