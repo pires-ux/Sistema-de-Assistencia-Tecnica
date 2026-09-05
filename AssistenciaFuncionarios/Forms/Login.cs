@@ -20,15 +20,19 @@ namespace AssistenciaFuncionarios
 
             if(await api.Login(login))
             {
-                Login.ActiveForm.Hide();
+                this.Hide();
                 TelaPrincipal tela = new TelaPrincipal();
                 tela.Show();
+            }
+            else
+            {
+                MessageBox.Show("email ou senha incorreta");
             }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Login.ActiveForm.Hide();
+            this.Hide();
             Cadastro cadastro = new Cadastro();
             cadastro.Show();
         }

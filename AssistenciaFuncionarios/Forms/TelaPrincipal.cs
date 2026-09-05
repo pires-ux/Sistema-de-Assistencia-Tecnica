@@ -20,7 +20,8 @@ namespace AssistenciaFuncionarios
         }
 
         ServiceApi api = new ServiceApi();
-
+        
+        bool editado = false;
         private async void TelaPrincipal_Load(object sender, EventArgs e)
         {
             await Listar();
@@ -29,12 +30,36 @@ namespace AssistenciaFuncionarios
         public async Task Listar()
         {
             dataGridView1.Rows.Clear();
-            List<ServicoDTO> servico = await api.ServicoListar();
-            foreach(var serv in servico)
+            List<ServicoDTO> servicos = await api.ServicoListar();
+            foreach (var serv in servicos)
             {
-                dataGridView1.Rows.Add(serv.Cliente, serv.Aparelho, serv.Valor, serv.Data, serv.Status);
-               
+                dataGridView1.Rows.Add(serv.Id, serv.Cliente, serv.Aparelho, serv.Data, serv.Valor,  serv.Status);                
             }
+
+        }
+
+        private async void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {          
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+            int id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Id"].Value);
+            var valor = dataGridView1.Rows[e.RowIndex].Cells["Valor"].Value.ToString();
+            var status = dataGridView1.Rows[e.RowIndex].Cells["Status"].Value.ToString();
+            AtualizarServicoDTO servicoDTO = new AtualizarServicoDTO(id, Convert.ToDecimal(valor), status);
+            if (await api.Atualizar(servicoDTO))
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("erro ao atualizar serviço");
+            }
+
+        }
+
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.ClearSelection(); 
         }
     }
 }

@@ -15,6 +15,11 @@ namespace AssistenciaApi.Repository
             _context = context;
         }
 
+        public async Task<OrdemDeServico> Buscar(int id)
+        {
+            var servico = _context.OrdemDeServicos.Find(id);
+            return servico;
+        }
 
         public async Task<List<ServicoMostraDto>> ClienteListar(int idcliente)
         {
@@ -41,14 +46,26 @@ namespace AssistenciaApi.Repository
         {
             List<ServicoFuncionarioDTO> service = _context.OrdemDeServicos.Select(x => new ServicoFuncionarioDTO
             {
+                Id = x.Id,
                 Cliente = x.Cliente.Nome,
                 Aparelho = x.Aparelho,              
                 Valor = x.Valor,
                 Data = DateOnly.FromDateTime(x.Data),
-                Status = x.Status
+                Status = x.Status,
+                Telefone = x.Cliente.Telefone
             }).ToList();
 
             return service;
         }
+
+        public void AtualizarServico(AtualizarServicoDTO atualizar)
+        {
+            OrdemDeServico servico = _context.OrdemDeServicos.Find(atualizar.Id);
+            servico.Status = atualizar.Status;
+            servico.Valor = atualizar.Valor;
+            _context.SaveChanges();
+        }
+
+
     }
 }

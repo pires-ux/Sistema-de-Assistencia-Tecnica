@@ -1,4 +1,4 @@
-﻿using AssistenciaFuncionarios.DTO;
+﻿ using AssistenciaFuncionarios.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,5 +63,19 @@ namespace AssistenciaFuncionarios.Service
             return servico;
 
         }    
+
+        public async Task<bool> Atualizar(AtualizarServicoDTO servico)
+        {
+            var json = JsonSerializer.Serialize(servico);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _http.PatchAsync($"http://localhost:5156/Problema/Atualizar", content);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
+        }
+
+
     }
 }

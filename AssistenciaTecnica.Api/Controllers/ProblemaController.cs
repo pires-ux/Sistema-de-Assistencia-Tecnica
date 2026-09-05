@@ -18,23 +18,31 @@ namespace Api4.Controllers
 
         List<ServicoMostraDto> serviços = new List<ServicoMostraDto>();
 
-        
+
         [HttpGet("{idcliente}")]
         public async Task<IActionResult> Get(int idcliente)
         {
             serviços = await _service.ClienteListar(idcliente);
-            if(serviços == null)
-        {
+            if (serviços == null)
+            {
                 return NotFound();
-        }
+            }
             return Ok(serviços);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(OrdemDeServico ordem)
+        public async Task<IActionResult> Criar(OrdemDeServico ordem)
         {
             _service.Criar(ordem);
             return Ok("criada com sucesso!");
+        }
+
+
+        [HttpPatch("Atualizar")]
+        public async Task<IActionResult> Atualizar(AtualizarServicoDTO atualizar)
+        {
+            await _service.AtualizarServico(atualizar);
+            return Ok("servico atualizado");
         }
 
 
@@ -44,5 +52,6 @@ namespace Api4.Controllers
             List<ServicoFuncionarioDTO> servico = await _service.FuncionarioListar();
             return Ok(servico);
         }
+
     }
 }

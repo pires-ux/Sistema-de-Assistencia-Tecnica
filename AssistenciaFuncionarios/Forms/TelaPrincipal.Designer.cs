@@ -29,47 +29,72 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
+            Id = new DataGridViewTextBoxColumn();
+            Cliente = new DataGridViewTextBoxColumn();
+            Aparelho = new DataGridViewTextBoxColumn();
             Data = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
+            Valor = new DataGridViewTextBoxColumn();
+            Status = new DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToOrderColumns = true;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Data, Column3, Column4 });
-            dataGridView1.Location = new Point(28, 119);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, Cliente, Aparelho, Data, Valor, Status });
+            dataGridView1.EditMode = DataGridViewEditMode.EditOnF2;
+            dataGridView1.GridColor = SystemColors.InfoText;
+            dataGridView1.Location = new Point(12, 124);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(543, 191);
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.Size = new Size(330, 195);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellClick += dataGridView1_CellClick;
+            dataGridView1.CellEndEdit += dataGridView1_CellEndEdit;
             // 
-            // Column1
+            // Id
             // 
-            Column1.HeaderText = "Cliente";
-            Column1.Name = "Column1";
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.Visible = false;
+            Id.Width = 23;
             // 
-            // Column2
+            // Cliente
             // 
-            Column2.HeaderText = "Aparelho";
-            Column2.Name = "Column2";
+            Cliente.HeaderText = "Cliente";
+            Cliente.Name = "Cliente";
+            Cliente.Width = 69;
+            // 
+            // Aparelho
+            // 
+            Aparelho.HeaderText = "Aparelho";
+            Aparelho.Name = "Aparelho";
+            Aparelho.Width = 80;
             // 
             // Data
             // 
             Data.HeaderText = "Data";
             Data.Name = "Data";
+            Data.Width = 56;
             // 
-            // Column3
+            // Valor
             // 
-            Column3.HeaderText = "Valor";
-            Column3.Name = "Column3";
+            Valor.HeaderText = "Valor";
+            Valor.Name = "Valor";
+            Valor.Width = 58;
             // 
-            // Column4
+            // Status
             // 
-            Column4.HeaderText = "Status";
-            Column4.Name = "Column4";
+            Status.HeaderText = "Status";
+            Status.Items.AddRange(new object[] { "Aguardando análise", "Em manutenção", "Aguardando peça", "Pronto", "Entregue" });
+            Status.Name = "Status";
+            Status.Resizable = DataGridViewTriState.True;
+            Status.SortMode = DataGridViewColumnSortMode.Automatic;
+            Status.Width = 64;
             // 
             // TelaPrincipal
             // 
@@ -77,6 +102,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(619, 349);
             Controls.Add(dataGridView1);
+            ForeColor = SystemColors.ControlText;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "TelaPrincipal";
             Text = "TelaPrincipal";
             Load += TelaPrincipal_Load;
@@ -88,10 +115,11 @@
 
 
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn Cliente;
+        private DataGridViewTextBoxColumn Aparelho;
         private DataGridViewTextBoxColumn Data;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Valor;
+        private DataGridViewComboBoxColumn Status;
     }
 }

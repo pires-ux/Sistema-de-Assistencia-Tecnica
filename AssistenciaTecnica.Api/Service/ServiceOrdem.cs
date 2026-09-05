@@ -4,12 +4,13 @@ using AssistenciaApi.Interface.Service;
 
 namespace Api4
 {
-    public class ServiceOrdem: IOrdemService
+    public class ServiceOrdem : IOrdemService
     {
         private readonly IServicoRepository _repository;
-
-        public ServiceOrdem(IServicoRepository repository)
+        private readonly ILogger<ServiceOrdem> _log;
+        public ServiceOrdem(IServicoRepository repository, ILogger<ServiceOrdem> log)
         {
+            _log = log;
             _repository = repository;
         }
 
@@ -29,6 +30,19 @@ namespace Api4
         public async Task<List<ServicoFuncionarioDTO>> FuncionarioListar()
         {
             var servico = await _repository.FuncionarioListar();
+            return servico;
+        }
+
+        public async Task AtualizarServico(AtualizarServicoDTO atualizar)
+        {
+            _repository.AtualizarServico(atualizar); 
+
+        }
+
+        public async Task<ServicoFuncionarioDTO> BuscarId(int id)
+        {
+            var servicos = await _repository.Buscar(id);
+            ServicoFuncionarioDTO servico = new ServicoFuncionarioDTO();
             return servico;
         }
     }

@@ -10,5 +10,9 @@ namespace AssistenciaApi.Interface.Service
         public void Criar(OrdemDeServico ordem);
 
         public Task<List<ServicoFuncionarioDTO>> FuncionarioListar();
+
+        public Task AtualizarServico(AtualizarServicoDTO atualizar);
+
+        public Task<ServicoFuncionarioDTO> BuscarId(int id);
     }
 }
