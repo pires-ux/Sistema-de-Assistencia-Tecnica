@@ -1,6 +1,8 @@
 ﻿using AssistenciaApi.DTOs;
 using AssistenciaApi.Interface.Repository;
 using AssistenciaApi.Interface.Service;
+using BCrypt.Net;
+
 
 namespace Api4
 {
@@ -31,7 +33,6 @@ namespace Api4
                 Id = clienteGto.Id,
                 Nome = clienteGto.Nome,
                 Email = clienteGto.Email,
-                Endereco = clienteGto.Endereco,
                 Telefone = clienteGto.Telefone,
             };
             _repository.Criar(cliente);
@@ -56,9 +57,10 @@ namespace Api4
             return false;
         }
 
-        public bool Login(LoginClienteDTO login)
+        public async Task<bool> Login(LoginClienteDTO login)
         {
-            if (_repository.Login(login))
+            Cliente cliente = await _repository.Login(login);
+            if (cliente != null)
             {
                 return true;
             }

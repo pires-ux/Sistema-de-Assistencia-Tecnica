@@ -36,9 +36,9 @@ namespace AssistenciaApi.Repository
             _context.SaveChanges();
         }
 
-        public bool Login(LoginClienteDTO login)
+        public async Task<Cliente> Login(LoginClienteDTO login)
         {
-            bool resultado = _context.Clientes.Any(c => c.Email == login.Email && c.Senha == login.Senha);
+            var resultado = _context.Clientes.FirstOrDefault(c => c.Email == login.Email);
             return resultado;
         }
     }

@@ -30,7 +30,7 @@ namespace Api4.Controllers
             return Ok(cliente);
         }
 
-        [HttpPost]
+        [HttpPost("Criar")]
         public IActionResult Criar(CriarClienteDto cliente)
         {
             if(_service.VerificarEmail(cliente))
@@ -46,13 +46,13 @@ namespace Api4.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login(LoginClienteDTO login)
+        public async Task<IActionResult> Login(LoginClienteDTO login)
         {
-            if (!_service.Login(login))
+            if (await _service.Login(login))
             {
-                return BadRequest("Email ou senha inválidos.");
+                return Ok("Conta logada com sucesso.");
             }
-            return Ok("Conta logada com sucesso.");
+            return BadRequest("Email ou senha inválidos.");
         }
 
     }

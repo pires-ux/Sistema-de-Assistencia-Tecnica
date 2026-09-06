@@ -8,18 +8,14 @@
         public string Nome { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
-        public string Endereco { get; set; }
-        public string Senha { get; set; }
 
 
-        public CriarClienteDto(int id, string nome, string telefone, string email, string endereco, string senha)
+        public CriarClienteDto(int id, string nome, string telefone, string email)
         {
             Id = id;
             Nome = nome;
             Telefone = telefone;
             Email = email;
-            Endereco = endereco;
-            Senha = senha;
         }
     }
 }

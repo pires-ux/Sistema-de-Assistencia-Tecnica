@@ -15,7 +15,7 @@ namespace AssistenciaApi.Interface.Service
 
         public bool VerificarEmail(CriarClienteDto clienteGto);
 
-        public bool Login(LoginClienteDTO login);
+        public Task<bool> Login(LoginClienteDTO login);
 
     }
 }
