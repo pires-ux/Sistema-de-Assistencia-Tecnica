@@ -13,7 +13,9 @@ namespace AssistenciaApi.Interface.Service
 
         public bool VerificarTelefone(CriarClienteDto clienteGto);
 
-        public bool VerificarCpf(CriarClienteDto clienteGto);
+        public bool VerificarEmail(CriarClienteDto clienteGto);
+
+        public bool Login(LoginClienteDTO login);
 
     }
 }

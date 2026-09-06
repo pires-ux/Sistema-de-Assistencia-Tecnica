@@ -1,4 +1,5 @@
 ﻿using Api4;
+using AssistenciaApi.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace AssistenciaApi.Context
@@ -9,6 +10,7 @@ namespace AssistenciaApi.Context
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<OrdemDeServico> OrdemDeServicos { get; set; }
+        public DbSet<Funcionarios> Funcionarios { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

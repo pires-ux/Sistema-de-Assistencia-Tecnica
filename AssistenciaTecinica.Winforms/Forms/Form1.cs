@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Ex04
 {
-    public partial class Form1 : Form
+    public partial class  Form1 : Form
     {
         public Form1()
         {
@@ -22,10 +22,10 @@ namespace Ex04
         {
             string nome = textBox1.Text;
             string telefone = textBox2.Text;
-            string cpf = textBox3.Text;
+            string email = textBox3.Text;
             string endereco = textBox4.Text;
 
-            Cliente cliente = new Cliente(0, nome, telefone, cpf, endereco);
+            Cliente cliente = new Cliente(0, nome, telefone, email, endereco);
 
             MessageBox.Show(await service.CreateCliente(cliente));
         }

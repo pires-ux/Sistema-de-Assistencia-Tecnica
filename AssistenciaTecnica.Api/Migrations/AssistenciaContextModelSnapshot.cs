@@ -30,7 +30,7 @@ namespace AssistenciaApi.Migrations
 
                     MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Cpf")
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -39,6 +39,10 @@ namespace AssistenciaApi.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Senha")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -86,6 +90,31 @@ namespace AssistenciaApi.Migrations
                     b.HasIndex("ClienteId");
 
                     b.ToTable("OrdemDeServicos");
+                });
+
+            modelBuilder.Entity("AssistenciaApi.Models.Funcionarios", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Funcionarios");
                 });
 
             modelBuilder.Entity("Api4.OrdemDeServico", b =>

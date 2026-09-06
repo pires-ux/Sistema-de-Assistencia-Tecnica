@@ -15,11 +15,16 @@ namespace AssistenciaApi.Repository
             _context = context;
         }
 
-
-        public List<ServicoMostraDto> Listar(int idcliente)
+        public async Task<OrdemDeServico> Buscar(int id)
         {
-            List<ServicoMostraDto> ordems = new List<ServicoMostraDto>();
-            ordems = _context.OrdemDeServicos.Select(x => new ServicoMostraDto
+            var servico = _context.OrdemDeServicos.Find(id);
+            return servico;
+        }
+
+        public async Task<List<ServicoMostraDto>> ClienteListar(int idcliente)
+        {
+            
+            var ordems = _context.OrdemDeServicos.Select(x => new ServicoMostraDto
             {
                 Aparelho = x.Aparelho,
                 Descricao = x.Descrição,
@@ -29,17 +34,36 @@ namespace AssistenciaApi.Repository
             return ordems;
         }
 
-        public OrdemDeServico Mostrar(int id)
-        {
-            OrdemDeServico ordem = _context.OrdemDeServicos.Find(id);
-            return ordem;
-        }
 
-        public void Criar(OrdemDeServico ordem)
+        public async void Criar(OrdemDeServico ordem)
         {
             _context.OrdemDeServicos.Add(ordem);
             _context.SaveChanges();
              
+        }
+
+        public async Task<List<ServicoFuncionarioDTO>> FuncionarioListar()
+        {
+            List<ServicoFuncionarioDTO> service = _context.OrdemDeServicos.Select(x => new ServicoFuncionarioDTO
+            {
+                Id = x.Id,
+                Cliente = x.Cliente.Nome,
+                Aparelho = x.Aparelho,              
+                Valor = x.Valor,
+                Data = DateOnly.FromDateTime(x.Data),
+                Status = x.Status,
+                Telefone = x.Cliente.Telefone
+            }).ToList();
+
+            return service;
+        }
+
+        public void AtualizarServico(AtualizarServicoDTO atualizar)
+        {
+            OrdemDeServico servico = _context.OrdemDeServicos.Find(atualizar.Id);
+            servico.Status = atualizar.Status;
+            servico.Valor = atualizar.Valor;
+            _context.SaveChanges();
         }
 
 

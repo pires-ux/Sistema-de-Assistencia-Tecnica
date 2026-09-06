@@ -33,16 +33,26 @@ namespace Api4.Controllers
         [HttpPost]
         public IActionResult Criar(CriarClienteDto cliente)
         {
-            if(_service.VerificarCpf(cliente))
+            if(_service.VerificarEmail(cliente))
             {
-                return BadRequest("CPF já cadastrado.");
+                return BadRequest("Email já cadastrado.");
             }
             if (_service.VerificarTelefone(cliente))
-        {                    
+            {                    
                 return BadRequest("Telefone já cadastrado.");
             }
             _service.Criar(cliente);
             return Ok(cliente);
+        }
+
+        [HttpPost("login")]
+        public IActionResult Login(LoginClienteDTO login)
+        {
+            if (!_service.Login(login))
+            {
+                return BadRequest("Email ou senha inválidos.");
+            }
+            return Ok("Conta logada com sucesso.");
         }
 
     }
