@@ -8,7 +8,6 @@ namespace AssistenciaWinForms.DTOs
 {
     internal class LoginClienteDTO
     {
-        public string email { get; set; }
-        public string senha { get; set; }
+        public string email { get; set; } = string.Empty;
     }
 }

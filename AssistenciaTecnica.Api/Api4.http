@@ -19,12 +19,9 @@ GET {{Api4_HostAddress}}/Problema/Funcionario
 Accept: application/json
 
 ###
-POST {{Api4_HostAddress}}/Cliente/Criar
+POST {{Api4_HostAddress}}/Cliente/Login
 Content-Type: application/json
 
 {
-    "id": 0,
-    "nome": "adriano",
-    "telefone": "14991835166",
     "email": "adriano@gmail.com"
 }
