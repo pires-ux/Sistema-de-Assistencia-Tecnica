@@ -13,8 +13,6 @@ namespace ex04
             InitializeComponent();
             _cliente = cliente;
         }
-
-        Aparelho aparelho = new Aparelho();
         List<ServicoDTO> serviços = new List<ServicoDTO>();
         ServiceApi ServiceApi = new ServiceApi();
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -24,56 +22,7 @@ namespace ex04
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            comboBox1.Items.AddRange(aparelho.GetType().GetEnumNames());
             listar();
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            aparelho = comboBox1.SelectedItem.ToString() switch
-            {
-                "Celular" => Aparelho.Celular,
-                "Impressora" => Aparelho.Impressora,
-                "Notebook" => Aparelho.Notebook,
-                "Computador" => Aparelho.Computador,
-                _ => throw new ArgumentOutOfRangeException()
-            };
-        }
-
-        private async void button1_Click(object sender, EventArgs e)
-        {
-            string nome = _cliente.nome;
-            string descrição = textBox1.Text;
-            string item = aparelho.ToString();
-            DateTime data = DateTime.Now;
-            DateOnly dia = DateOnly.FromDateTime(data);
-            Serviço serviço = new Serviço()
-            {
-                Id = 0,
-                ClienteId = _cliente.id,
-                Aparelho = item,
-                Descrição = descrição,
-                Data = dia,
-                Status = "Aberto",
-                Valor = 0,
-            };
-            MessageBox.Show(await ServiceApi.CriarServiço(serviço));
-            listar();
-            
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        public enum Aparelho
-        {
-            Celular,
-            Impressora,
-            Notebook,
-            Computador
         }
 
         public async void listar()
@@ -85,7 +34,7 @@ namespace ex04
             {
                 dataGridView1.Rows.Add(item.Aparelho, item.Descricao, item.Data, item.Valor, item.Status);
             }
-            }
+        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

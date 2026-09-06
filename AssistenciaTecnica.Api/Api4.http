@@ -17,3 +17,11 @@ Content-Type: application/json
 ###
 GET {{Api4_HostAddress}}/Problema/Funcionario
 Accept: application/json
+
+###
+POST {{Api4_HostAddress}}/Cliente/Login
+Content-Type: application/json
+
+{
+    "email": "adriano@gmail.com"
+}

@@ -11,6 +11,6 @@ namespace AssistenciaApi.Interface.Repository
 
         public void Criar(Cliente cliente);
 
-        public bool Login(LoginClienteDTO login);
+        public Task<Cliente> Login(LoginClienteDTO login);
     }
 }

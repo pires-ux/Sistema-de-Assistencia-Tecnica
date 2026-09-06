@@ -25,15 +25,18 @@ namespace Ex04
             LoginClienteDTO login = new LoginClienteDTO()
             {
                 email = textBox1.Text,
-                senha = textBox2.Text
             };
             if (await apiService.Login(login))
             {
                 Cliente cliente = clientes.Find(c => c.email == login.email);
-                Form2.ActiveForm.Hide();
+                this.Hide();
                 Form3 form3 = new Form3(cliente);
                 form3.Show();
                 
+            }
+            else
+            {
+                MessageBox.Show("email incorreto");
             }
         }
 
