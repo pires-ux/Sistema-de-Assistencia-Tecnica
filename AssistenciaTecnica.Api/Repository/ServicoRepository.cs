@@ -2,7 +2,7 @@
 using Api4;
 using AssistenciaApi.Context;
 using AssistenciaApi.DTOs;
-using AssistenciaApi.Interface.Repository;
+using AssistenciaApi.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AssistenciaApi.Repository

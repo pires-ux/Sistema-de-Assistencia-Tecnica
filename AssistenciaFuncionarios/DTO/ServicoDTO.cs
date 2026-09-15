@@ -15,6 +15,7 @@ namespace AssistenciaFuncionarios.DTO
 
         }
         public int Id { get; set; }
+        public int ClienteId { get; set; }
         public string Cliente { get; set; }
         public string Aparelho { get; set; }
         public decimal Valor { get; set; }

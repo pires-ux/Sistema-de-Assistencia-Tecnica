@@ -1,6 +1,6 @@
 ﻿using AssistenciaApi.DTOs;
-using AssistenciaApi.Interface.Repository;
-using AssistenciaApi.Interface.Service;
+using AssistenciaApi.Repository.Interface;
+using AssistenciaApi.Service.Interface;
 using BCrypt.Net;
 
 
@@ -26,7 +26,7 @@ namespace Api4
             return _repository.Mostrar(id);
         }
 
-        public void Criar(CriarClienteDto clienteGto)
+        public Task<Cliente> Criar(CriarClienteDto clienteGto)
         {
             Cliente cliente = new Cliente()
             {
@@ -36,6 +36,13 @@ namespace Api4
                 Telefone = clienteGto.Telefone,
             };
             _repository.Criar(cliente);
+            LoginClienteDTO login = new LoginClienteDTO
+            {
+                Email = cliente.Email
+            };
+
+            var clienteLogado = _repository.Login(login);
+            return clienteLogado;
         }
 
         public bool VerificarTelefone(CriarClienteDto clienteGto)

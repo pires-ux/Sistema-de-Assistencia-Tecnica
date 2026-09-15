@@ -30,7 +30,7 @@ namespace Api4.Controllers
             return Ok(serviços);
         }
 
-        [HttpPost]
+        [HttpPost("criar")]
         public async Task<IActionResult> Criar(OrdemDeServico ordem)
         {
             _service.Criar(ordem);

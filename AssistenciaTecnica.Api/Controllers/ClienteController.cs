@@ -41,8 +41,8 @@ namespace Api4.Controllers
             {                    
                 return BadRequest("Telefone já cadastrado.");
             }
-            _service.Criar(cliente);
-            return Ok(cliente);
+            var cl =_service.Criar(cliente);//retorna cliente com o id
+            return Ok(cl);
         }
 
         [HttpPost("login")]

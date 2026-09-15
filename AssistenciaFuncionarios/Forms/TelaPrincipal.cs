@@ -1,4 +1,5 @@
 ﻿using AssistenciaFuncionarios.DTO;
+using AssistenciaFuncionarios.Forms;
 using AssistenciaFuncionarios.Service;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace AssistenciaFuncionarios
         }
 
         ServiceApi api = new ServiceApi();
-        
+
         bool editado = false;
         private async void TelaPrincipal_Load(object sender, EventArgs e)
         {
@@ -33,13 +34,13 @@ namespace AssistenciaFuncionarios
             List<ServicoDTO> servicos = await api.ServicoListar();
             foreach (var serv in servicos)
             {
-                dataGridView1.Rows.Add(serv.Id, serv.Cliente, serv.Aparelho, serv.Data, serv.Valor,  serv.Status);                
+                dataGridView1.Rows.Add(serv.Id, serv.Cliente, serv.Aparelho, serv.Data, serv.Valor, serv.Status);
             }
 
         }
 
         private async void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {          
+        {
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
             int id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Id"].Value);
             var valor = dataGridView1.Rows[e.RowIndex].Cells["Valor"].Value.ToString();
@@ -59,7 +60,14 @@ namespace AssistenciaFuncionarios
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridView1.ClearSelection(); 
+            dataGridView1.ClearSelection();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            CadastrarCliente form = new CadastrarCliente();
+            form.Show();
         }
     }
 }

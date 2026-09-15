@@ -1,7 +1,7 @@
 ﻿using AssistenciaApi.DTOs;
 using AssistenciaApi.Models;
 
-namespace AssistenciaApi.Interface.Repository
+namespace AssistenciaApi.Repository.Interface
 {
     public interface IFuncionarioRepository
     {

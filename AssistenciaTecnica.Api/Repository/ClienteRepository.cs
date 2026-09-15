@@ -1,7 +1,7 @@
 ﻿using Api4;
 using AssistenciaApi.Context;
 using AssistenciaApi.DTOs;
-using AssistenciaApi.Interface.Repository;
+using AssistenciaApi.Repository.Interface;
 using ZstdSharp.Unsafe;
 
 namespace AssistenciaApi.Repository

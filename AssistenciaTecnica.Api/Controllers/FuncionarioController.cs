@@ -1,7 +1,7 @@
 ﻿using AssistenciaApi.DTOs;
-using AssistenciaApi.Interface.Service;
 using AssistenciaApi.Models;
 using AssistenciaApi.Service;
+using AssistenciaApi.Service.Interface;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AssistenciaApi.Controllers

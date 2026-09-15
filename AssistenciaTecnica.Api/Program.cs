@@ -1,10 +1,10 @@
 
 using Api4.Controllers;
 using AssistenciaApi.Context;
-using AssistenciaApi.Interface.Repository;
-using AssistenciaApi.Interface.Service;
 using AssistenciaApi.Repository;
+using AssistenciaApi.Repository.Interface;
 using AssistenciaApi.Service;
+using AssistenciaApi.Service.Interface;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api4

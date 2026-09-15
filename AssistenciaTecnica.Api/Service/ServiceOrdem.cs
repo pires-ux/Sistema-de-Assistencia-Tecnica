@@ -1,6 +1,6 @@
 ﻿using AssistenciaApi.DTOs;
-using AssistenciaApi.Interface.Repository;
-using AssistenciaApi.Interface.Service;
+using AssistenciaApi.Repository.Interface;
+using AssistenciaApi.Service.Interface;
 
 namespace Api4
 {

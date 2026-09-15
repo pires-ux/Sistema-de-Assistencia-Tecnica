@@ -1,7 +1,7 @@
 ﻿using Api4;
 using AssistenciaApi.DTOs;
 
-namespace AssistenciaApi.Interface.Repository
+namespace AssistenciaApi.Repository.Interface
 {
     public interface IClienteRepository
     {
