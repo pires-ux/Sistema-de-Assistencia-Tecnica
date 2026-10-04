@@ -92,9 +92,9 @@ namespace AssistenciaFuncionarios.Service
             return result;
         }
 
-        public  async Task<bool> CriarServico(ServicoDTO servico)
+        public  async Task<bool> CriarClienteComServico(CriarClienteComServicoDTO dados)
         {
-            string json = JsonSerializer.Serialize(servico);
+            string json = JsonSerializer.Serialize(dados);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await _http.PostAsync($"http://localhost:5156/Problema/Criar", content);
             if (response.IsSuccessStatusCode)

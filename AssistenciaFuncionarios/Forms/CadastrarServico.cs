@@ -37,7 +37,7 @@ namespace AssistenciaFuncionarios.Forms
             decimal valor = Convert.ToDecimal(textBox3.Text);
             var data = DateTime.Now;
             DateOnly dateOnly = DateOnly.FromDateTime(data);
-            ServicoDTO servico = new ServicoDTO
+            CriarClienteComServicoDTO dados = new CriarClienteComServicoDTO
             {
                 Id = 0,
                 ClienteId = _cliente.Id,
@@ -46,10 +46,11 @@ namespace AssistenciaFuncionarios.Forms
                 Valor = valor,
                 Data = dateOnly,
                 Status = "Em Analise",
-                Telefone = _cliente.Telefone
+                Telefone = _cliente.Telefone,
+                cliente = _cliente,
             };
 
-            if (await api.CriarServico(servico))
+            if (await api.CriarClienteComServico(dados))
             {
                 this.Hide();
                 TelaPrincipal form = new TelaPrincipal();

@@ -33,15 +33,14 @@ namespace AssistenciaFuncionarios.Forms
                 Telefone = telefone,
                 Email = email
             };
-            var resultado = await api.AdicionarCliente(cliente);
-            MessageBox.Show(resultado.ToString());
-            if (resultado != null)
+            
+            try
             {
                 this.Hide();
-                CadastrarServico form = new CadastrarServico(resultado);
+                CadastrarServico form = new CadastrarServico(cliente);
                 form.Show();
             }
-            else
+            catch
             {
                 MessageBox.Show("erro ao adicionar cliente");
             }
