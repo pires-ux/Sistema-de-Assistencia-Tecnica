@@ -1,7 +1,7 @@
 ﻿using Api4;
 using AssistenciaApi.DTOs;
 
-namespace AssistenciaApi.Interface.Service
+namespace AssistenciaApi.Service.Interface
 {
     public interface IClienteService
     {
@@ -9,7 +9,7 @@ namespace AssistenciaApi.Interface.Service
 
         public Cliente Mostrar(int id);
 
-        public void Criar(CriarClienteDto clienteGto);
+        public Task<Cliente> Criar(CriarOrdemDeServicoDTO dados);
 
         public bool VerificarTelefone(CriarClienteDto clienteGto);
 

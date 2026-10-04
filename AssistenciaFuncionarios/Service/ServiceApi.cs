@@ -1,7 +1,9 @@
 ﻿ using AssistenciaFuncionarios.DTO;
+using AssistenciaFuncionarios.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -76,6 +78,30 @@ namespace AssistenciaFuncionarios.Service
             return false;
         }
 
+        public async Task<Cliente> AdicionarCliente(Cliente cliente)
+        {
+            string json = JsonSerializer.Serialize(cliente);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _http.PostAsync($"http://localhost:5156/Cliente/Criar", content);
+            var ResponseJson = await response.Content.ReadAsStringAsync();
+            var opções = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            var result = JsonSerializer.Deserialize<Cliente>(ResponseJson, opções);
+            return result;
+        }
 
+        public  async Task<bool> CriarClienteComServico(CriarClienteComServicoDTO dados)
+        {
+            string json = JsonSerializer.Serialize(dados);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await _http.PostAsync($"http://localhost:5156/Cliente/CriarComServico", content);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false; 
+        }
     }
 }

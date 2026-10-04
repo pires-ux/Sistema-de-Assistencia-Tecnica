@@ -19,9 +19,21 @@ GET {{Api4_HostAddress}}/Problema/Funcionario
 Accept: application/json
 
 ###
-POST {{Api4_HostAddress}}/Cliente/Login
+POST {{Api4_HostAddress}}/Cliente/CriarComServico
 Content-Type: application/json
 
 {
-    "email": "adriano@gmail.com"
+  "id": 1,
+  "aparelho": "Notebook Dell",
+  "descrição": "Notebook não liga",
+  "data": "2026-10-04T14:30:00",
+  "status": "Aguardando análise",
+  "valor": 250.00,
+  "clienteId": 1,
+  "cliente": {
+    "id": 1,
+    "nome": "Adriano Silva",
+    "telefone": "14999999999",
+    "email": "adriano@email.com"
+  }
 }

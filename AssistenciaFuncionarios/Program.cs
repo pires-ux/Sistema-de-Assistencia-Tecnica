@@ -1,3 +1,5 @@
+using AssistenciaFuncionarios.Forms;
+
 namespace AssistenciaFuncionarios
 {
     internal static class Program

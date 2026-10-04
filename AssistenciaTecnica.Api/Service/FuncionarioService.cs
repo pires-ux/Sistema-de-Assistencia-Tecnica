@@ -1,8 +1,8 @@
 ﻿using AssistenciaApi.DTOs;
-using AssistenciaApi.Interface.Repository;
-using AssistenciaApi.Interface.Service;
 using AssistenciaApi.Models;
 using AssistenciaApi.Repository;
+using AssistenciaApi.Repository.Interface;
+using AssistenciaApi.Service.Interface;
 using Org.BouncyCastle.Crypto.Generators;
 
 namespace AssistenciaApi.Service

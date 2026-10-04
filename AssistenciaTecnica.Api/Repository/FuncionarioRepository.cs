@@ -1,7 +1,7 @@
 ﻿using AssistenciaApi.Context;
 using AssistenciaApi.DTOs;
-using AssistenciaApi.Interface.Repository;
 using AssistenciaApi.Models;
+using AssistenciaApi.Repository.Interface;
 
 namespace AssistenciaApi.Repository
 {

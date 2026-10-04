@@ -1,8 +1,8 @@
-﻿ using Api4;
+﻿using Api4;
 using AssistenciaApi.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AssistenciaApi.Interface.Repository
+namespace AssistenciaApi.Repository.Interface
 {
     public interface IServicoRepository
     {

@@ -1,7 +1,7 @@
 ﻿using Api4;
 using AssistenciaApi.DTOs;
 
-namespace AssistenciaApi.Interface.Service
+namespace AssistenciaApi.Service.Interface
 {
     public interface IOrdemService
     {

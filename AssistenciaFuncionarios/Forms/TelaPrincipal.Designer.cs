@@ -35,6 +35,7 @@
             Data = new DataGridViewTextBoxColumn();
             Valor = new DataGridViewTextBoxColumn();
             Status = new DataGridViewComboBoxColumn();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -99,11 +100,22 @@
             Status.SortMode = DataGridViewColumnSortMode.Automatic;
             Status.Width = 64;
             // 
+            // button1
+            // 
+            button1.Location = new Point(532, 314);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 1;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // TelaPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(619, 349);
+            Controls.Add(button1);
             Controls.Add(dataGridView1);
             ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -124,5 +136,6 @@
         private DataGridViewTextBoxColumn Data;
         private DataGridViewTextBoxColumn Valor;
         private DataGridViewComboBoxColumn Status;
+        private Button button1;
     }
 }

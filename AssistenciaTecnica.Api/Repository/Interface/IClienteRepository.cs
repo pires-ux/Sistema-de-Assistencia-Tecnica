@@ -1,7 +1,7 @@
 ﻿using Api4;
 using AssistenciaApi.DTOs;
 
-namespace AssistenciaApi.Interface.Repository
+namespace AssistenciaApi.Repository.Interface
 {
     public interface IClienteRepository
     {
@@ -9,8 +9,12 @@ namespace AssistenciaApi.Interface.Repository
         
         public Cliente Mostrar(int id);
 
-        public void Criar(Cliente cliente);
+        public void Criar(CriarOrdemDeServicoDTO dados);
 
         public Task<Cliente> Login(LoginClienteDTO login);
+
+        public Task<bool> VerificarEmail(string email);
+
+        public Task<bool> VerificarTelefone(string telefone);
     }
 }

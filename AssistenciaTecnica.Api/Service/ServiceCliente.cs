@@ -1,7 +1,8 @@
 ﻿using AssistenciaApi.DTOs;
-using AssistenciaApi.Interface.Repository;
-using AssistenciaApi.Interface.Service;
+using AssistenciaApi.Repository.Interface;
+using AssistenciaApi.Service.Interface;
 using BCrypt.Net;
+using MySqlX.XDevAPI;
 
 
 namespace Api4
@@ -26,16 +27,24 @@ namespace Api4
             return _repository.Mostrar(id);
         }
 
-        public void Criar(CriarClienteDto clienteGto)
-        {
-            Cliente cliente = new Cliente()
+        public async Task<Cliente> Criar(CriarOrdemDeServicoDTO dados)
+        {   
+            if (await _repository.VerificarEmail(dados.Cliente.Email))
             {
-                Id = clienteGto.Id,
-                Nome = clienteGto.Nome,
-                Email = clienteGto.Email,
-                Telefone = clienteGto.Telefone,
+                return null;
+            }
+            if (await _repository.VerificarTelefone(dados.Cliente.Telefone))
+            {
+                return null;
+            }
+            _repository.Criar(dados);
+            LoginClienteDTO login = new LoginClienteDTO
+            {
+                Email = dados.Cliente.Email
             };
-            _repository.Criar(cliente);
+
+            var clienteLogado = await _repository.Login(login);
+            return clienteLogado;
         }
 
         public bool VerificarTelefone(CriarClienteDto clienteGto)
