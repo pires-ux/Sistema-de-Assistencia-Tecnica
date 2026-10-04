@@ -9,7 +9,7 @@ namespace AssistenciaApi.Service.Interface
 
         public Cliente Mostrar(int id);
 
-        public Task<Cliente> Criar(CriarClienteDto clienteGto);
+        public Task<Cliente> Criar(CriarOrdemDeServicoDTO dados);
 
         public bool VerificarTelefone(CriarClienteDto clienteGto);
 

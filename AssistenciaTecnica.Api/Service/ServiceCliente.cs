@@ -2,6 +2,7 @@
 using AssistenciaApi.Repository.Interface;
 using AssistenciaApi.Service.Interface;
 using BCrypt.Net;
+using MySqlX.XDevAPI;
 
 
 namespace Api4
@@ -26,22 +27,23 @@ namespace Api4
             return _repository.Mostrar(id);
         }
 
-        public Task<Cliente> Criar(CriarClienteDto clienteGto)
-        {
-            Cliente cliente = new Cliente()
+        public async Task<Cliente> Criar(CriarOrdemDeServicoDTO dados)
+        {   
+            if (await _repository.VerificarEmail(dados.Cliente.Email))
             {
-                Id = clienteGto.Id,
-                Nome = clienteGto.Nome,
-                Email = clienteGto.Email,
-                Telefone = clienteGto.Telefone,
-            };
-            _repository.Criar(cliente);
+                return null;
+            }
+            if (await _repository.VerificarTelefone(dados.Cliente.Telefone))
+            {
+                return null;
+            }
+            _repository.Criar(dados);
             LoginClienteDTO login = new LoginClienteDTO
             {
-                Email = cliente.Email
+                Email = dados.Cliente.Email
             };
 
-            var clienteLogado = _repository.Login(login);
+            var clienteLogado = await _repository.Login(login);
             return clienteLogado;
         }
 

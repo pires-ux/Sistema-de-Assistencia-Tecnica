@@ -96,7 +96,7 @@ namespace AssistenciaFuncionarios.Service
         {
             string json = JsonSerializer.Serialize(dados);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await _http.PostAsync($"http://localhost:5156/Problema/Criar", content);
+            HttpResponseMessage response = await _http.PostAsync($"http://localhost:5156/Cliente/CriarComServico", content);
             if (response.IsSuccessStatusCode)
             {
                 return true;

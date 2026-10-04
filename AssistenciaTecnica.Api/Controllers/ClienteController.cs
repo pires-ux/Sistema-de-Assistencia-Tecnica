@@ -30,18 +30,15 @@ namespace Api4.Controllers
             return Ok(cliente);
         }
 
-        [HttpPost("Criar")]
-        public IActionResult Criar(CriarClienteDto cliente)
+        [HttpPost("CriarComServico")]
+        public async Task<IActionResult> CriarComServico(CriarOrdemDeServicoDTO dados)
         {
-            if(_service.VerificarEmail(cliente))
+            
+            var cl = await _service.Criar(dados);
+            if(cl == null)
             {
-                return BadRequest("Email já cadastrado.");
+                BadRequest("email ou telefone já cadastrado");
             }
-            if (_service.VerificarTelefone(cliente))
-            {                    
-                return BadRequest("Telefone já cadastrado.");
-            }
-            var cl =_service.Criar(cliente);//retorna cliente com o id
             return Ok(cl);
         }
 
