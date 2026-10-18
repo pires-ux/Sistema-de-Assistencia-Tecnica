@@ -1,71 +1,78 @@
-﻿
 using Api4;
 using AssistenciaApi.Context;
 using AssistenciaApi.DTOs;
 using AssistenciaApi.Repository.Interface;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AssistenciaApi.Repository
 {
     public class ServicoRepository : IServicoRepository
     {
         private readonly AssistenciaContext _context;
+
         public ServicoRepository(AssistenciaContext context)
         {
             _context = context;
         }
 
-        public async Task<OrdemDeServico> Buscar(int id)
+        public async Task<OrdemDeServico?> Buscar(int id)
         {
-            var servico = _context.OrdemDeServicos.Find(id);
-            return servico;
+            return await _context.OrdemDeServicos
+                .Include(x => x.Cliente)
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<List<ServicoMostraDto>> ClienteListar(int idcliente)
+        public async Task<List<ServicoMostraDto>> ClienteListar(int clienteId)
         {
-            
-            var ordems = _context.OrdemDeServicos.Select(x => new ServicoMostraDto
-            {
-                Aparelho = x.Aparelho,
-                Descricao = x.Descrição,
-                Valor = x.Valor,
-                Status = x.Status
-            }).ToList();
-            return ordems;
+            return await _context.OrdemDeServicos
+                .Where(x => x.ClienteId == clienteId)
+                .Select(x => new ServicoMostraDto
+                {
+                    Aparelho = x.Aparelho,
+                    Descricao = x.Descrição,
+                    Valor = x.Valor,
+                    Status = x.Status
+                })
+                .ToListAsync();
         }
 
-
-        public async void Criar(OrdemDeServico ordem)
+        public async Task Criar(OrdemDeServico ordem)
         {
             _context.OrdemDeServicos.Add(ordem);
-            _context.SaveChanges();
-             
+            await _context.SaveChangesAsync();
         }
 
         public async Task<List<ServicoFuncionarioDTO>> FuncionarioListar()
         {
-            List<ServicoFuncionarioDTO> service = _context.OrdemDeServicos.Select(x => new ServicoFuncionarioDTO
-            {
-                Id = x.Id,
-                Cliente = x.Cliente.Nome,
-                Aparelho = x.Aparelho,              
-                Valor = x.Valor,
-                Data = DateOnly.FromDateTime(x.Data),
-                Status = x.Status,
-                Telefone = x.Cliente.Telefone
-            }).ToList();
-
-            return service;
+            return await _context.OrdemDeServicos
+                .Select(x => new ServicoFuncionarioDTO
+                {
+                    Id = x.Id,
+                    Cliente = x.Cliente != null ? x.Cliente.Nome : "Cliente não encontrado",
+                    Aparelho = x.Aparelho,
+                    Valor = x.Valor,
+                    Data = DateOnly.FromDateTime(x.Data),
+                    Status = x.Status,
+                    Telefone = x.Cliente != null ? x.Cliente.Telefone : ""
+                })
+                .ToListAsync();
         }
 
-        public void AtualizarServico(AtualizarServicoDTO atualizar)
+        public async Task<bool> AtualizarServico(AtualizarServicoDTO atualizar)
         {
-            OrdemDeServico servico = _context.OrdemDeServicos.Find(atualizar.Id);
+            var servico = await _context.OrdemDeServicos
+                .FirstOrDefaultAsync(x => x.Id == atualizar.Id);
+
+            if (servico == null)
+            {
+                return false;
+            }
+
             servico.Status = atualizar.Status;
             servico.Valor = atualizar.Valor;
-            _context.SaveChanges();
+
+            await _context.SaveChangesAsync();
+            return true;
         }
-
-
     }
 }

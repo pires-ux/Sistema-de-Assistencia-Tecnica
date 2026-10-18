@@ -1,4 +1,4 @@
-﻿using AssistenciaApi.DTOs;
+using AssistenciaApi.DTOs;
 using AssistenciaApi.Repository.Interface;
 using AssistenciaApi.Service.Interface;
 
@@ -8,42 +8,51 @@ namespace Api4
     {
         private readonly IServicoRepository _repository;
         private readonly ILogger<ServiceOrdem> _log;
+
         public ServiceOrdem(IServicoRepository repository, ILogger<ServiceOrdem> log)
         {
             _log = log;
             _repository = repository;
         }
 
-        List<ServicoMostraDto> serviços = new List<ServicoMostraDto>();
-        public async Task<List<ServicoMostraDto>> ClienteListar(int clienteid)
+        public Task<List<ServicoMostraDto>> ClienteListar(int clienteId)
         {
-            serviços = await _repository.ClienteListar(clienteid);
-            return serviços;
+            return _repository.ClienteListar(clienteId);
         }
 
-
-        public async void Criar(OrdemDeServico ordem)
+        public Task Criar(OrdemDeServico ordem)
         {
-            _repository.Criar(ordem);
+            return _repository.Criar(ordem);
         }
 
-        public async Task<List<ServicoFuncionarioDTO>> FuncionarioListar()
+        public Task<List<ServicoFuncionarioDTO>> FuncionarioListar()
         {
-            var servico = await _repository.FuncionarioListar();
-            return servico;
+            return _repository.FuncionarioListar();
         }
 
-        public async Task AtualizarServico(AtualizarServicoDTO atualizar)
+        public Task<bool> AtualizarServico(AtualizarServicoDTO atualizar)
         {
-            _repository.AtualizarServico(atualizar); 
-
+            return _repository.AtualizarServico(atualizar);
         }
 
-        public async Task<ServicoFuncionarioDTO> BuscarId(int id)
+        public async Task<ServicoFuncionarioDTO?> BuscarId(int id)
         {
-            var servicos = await _repository.Buscar(id);
-            ServicoFuncionarioDTO servico = new ServicoFuncionarioDTO();
-            return servico;
+            var ordem = await _repository.Buscar(id);
+            if (ordem == null)
+            {
+                return null;
+            }
+
+            return new ServicoFuncionarioDTO
+            {
+                Id = ordem.Id,
+                Cliente = ordem.Cliente?.Nome ?? "Cliente não encontrado",
+                Aparelho = ordem.Aparelho,
+                Valor = ordem.Valor,
+                Data = DateOnly.FromDateTime(ordem.Data),
+                Status = ordem.Status,
+                Telefone = ordem.Cliente?.Telefone ?? ""
+            };
         }
     }
 }

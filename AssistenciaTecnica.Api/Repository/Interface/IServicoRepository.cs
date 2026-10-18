@@ -1,19 +1,14 @@
-﻿using Api4;
+using Api4;
 using AssistenciaApi.DTOs;
-using Microsoft.AspNetCore.Mvc;
 
 namespace AssistenciaApi.Repository.Interface
 {
     public interface IServicoRepository
     {
-        public Task<List<ServicoMostraDto>> ClienteListar(int clienteid);
-
-        public void Criar(OrdemDeServico ordem);
-
-        public Task<List<ServicoFuncionarioDTO>> FuncionarioListar();
-
-        public void AtualizarServico(AtualizarServicoDTO atualizar);
-
-        public Task<OrdemDeServico> Buscar(int id);
+        Task<List<ServicoMostraDto>> ClienteListar(int clienteId);
+        Task Criar(OrdemDeServico ordem);
+        Task<List<ServicoFuncionarioDTO>> FuncionarioListar();
+        Task<bool> AtualizarServico(AtualizarServicoDTO atualizar);
+        Task<OrdemDeServico?> Buscar(int id);
     }
 }

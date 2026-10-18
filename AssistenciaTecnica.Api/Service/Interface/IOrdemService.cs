@@ -1,18 +1,14 @@
-﻿using Api4;
+using Api4;
 using AssistenciaApi.DTOs;
 
 namespace AssistenciaApi.Service.Interface
 {
     public interface IOrdemService
     {
-        public Task<List<ServicoMostraDto>> ClienteListar(int clienteid);
-
-        public void Criar(OrdemDeServico ordem);
-
-        public Task<List<ServicoFuncionarioDTO>> FuncionarioListar();
-
-        public Task AtualizarServico(AtualizarServicoDTO atualizar);
-
-        public Task<ServicoFuncionarioDTO> BuscarId(int id);
+        Task<List<ServicoMostraDto>> ClienteListar(int clienteId);
+        Task Criar(OrdemDeServico ordem);
+        Task<List<ServicoFuncionarioDTO>> FuncionarioListar();
+        Task<bool> AtualizarServico(AtualizarServicoDTO atualizar);
+        Task<ServicoFuncionarioDTO?> BuscarId(int id);
     }
 }
