@@ -1,57 +1,73 @@
-﻿using AssistenciaApi.DTOs;
-using Microsoft.AspNetCore.Identity;
+using Api4;
+using AssistenciaApi.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api4.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ProblemaController : Controller
+    public class ProblemaController : ControllerBase
     {
         private readonly ServiceOrdem _service;
 
         public ProblemaController(ServiceOrdem service)
         {
             _service = service;
-
         }
 
-        List<ServicoMostraDto> serviços = new List<ServicoMostraDto>();
-
-
-        [HttpGet("{idcliente}")]
+        [HttpGet("{idcliente:int}")]
         public async Task<IActionResult> Get(int idcliente)
         {
-            serviços = await _service.ClienteListar(idcliente);
-            if (serviços == null)
-            {
-                return NotFound();
-            }
-            return Ok(serviços);
+            var servicos = await _service.ClienteListar(idcliente);
+            return Ok(servicos);
         }
 
         [HttpPost("criar")]
-        public async Task<IActionResult> Criar(OrdemDeServico ordem)
+        public async Task<IActionResult> Criar([FromBody] OrdemDeServico ordem)
         {
-            _service.Criar(ordem);
-            return Ok("criada com sucesso!");
-        }
+            if (ordem == null)
+            {
+                return BadRequest("Os dados da ordem são obrigatórios.");
+            }
 
+            await _service.Criar(ordem);
+            return Ok("Ordem criada com sucesso!");
+        }
 
         [HttpPatch("Atualizar")]
-        public async Task<IActionResult> Atualizar(AtualizarServicoDTO atualizar)
+        public async Task<IActionResult> Atualizar([FromBody] AtualizarServicoDTO atualizar)
         {
-            await _service.AtualizarServico(atualizar);
-            return Ok("servico atualizado");
-        }
+            if (atualizar == null || atualizar.Id <= 0)
+            {
+                return BadRequest("Informe um ID válido para a ordem.");
+            }
 
+            var atualizada = await _service.AtualizarServico(atualizar);
+            if (!atualizada)
+            {
+                return NotFound("Ordem de serviço não encontrada.");
+            }
+
+            return Ok("Serviço atualizado.");
+        }
 
         [HttpGet("Funcionario")]
         public async Task<IActionResult> GetResult()
         {
-            List<ServicoFuncionarioDTO> servico = await _service.FuncionarioListar();
-            return Ok(servico);
+            var servicos = await _service.FuncionarioListar();
+            return Ok(servicos);
         }
 
+        [HttpGet("Buscar/{id:int}")]
+        public async Task<IActionResult> BuscarPorId(int id)
+        {
+            var servico = await _service.BuscarId(id);
+            if (servico == null)
+            {
+                return NotFound("Ordem de serviço não encontrada.");
+            }
+
+            return Ok(servico);
+        }
     }
 }
